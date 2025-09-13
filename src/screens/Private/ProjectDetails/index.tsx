@@ -60,7 +60,7 @@ export default function ProjectDetails() {
       stop_funding_once_target_is_reached: isEnabled,
       amount_to_contribute: amount,
     };
-    //parthian API logic will go here later on
+    //I-Invest API logic will go here later on
     console.log('Creating project:', projectToSubmit);
     router.replace('/create-project-success');
   }, [

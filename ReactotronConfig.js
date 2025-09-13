@@ -8,7 +8,7 @@ let reactotron = undefined;
 if (__DEV__) {
   reactotron = Reactotron.setAsyncStorageHandler(AsyncStorage)
     .configure({
-      name: 'parthian',
+      name: 'I-Invest',
     })
     .useReactNative({
       asyncStorage: true, // enabled reactotron async storage, more context https://docs.infinite.red/reactotron/plugins/async-storage/

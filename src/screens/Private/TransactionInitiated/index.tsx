@@ -104,7 +104,7 @@ export default function TransactionInitiated() {
           >
             {transaction.transactionApproved
               ? 'You have approved this transaction, it will be verified soon.'
-              : 'parthian has notified the other signatories to approve the transaction.'}
+              : 'I-Invest has notified the other signatories to approve the transaction.'}
           </Typography>
 
           <Button

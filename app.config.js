@@ -3,36 +3,36 @@ const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 
 const getUniqueIdentifier = () => {
   if (IS_PROD) {
-    return 'com.parthian.app';
+    return 'com.I-Invest.app';
   }
 
   if (IS_PREVIEW) {
-    return 'com.parthian.app.preview';
+    return 'com.I-Invest.app.preview';
   }
 
-  return 'com.parthian.app.dev';
+  return 'com.I-Invest.app.dev';
 };
 
 const getAppName = () => {
   if (IS_PROD) {
-    return 'parthian';
+    return 'I-Invest';
   }
 
   if (IS_PREVIEW) {
-    return 'parthian (Preview)';
+    return 'I-Invest (Preview)';
   }
 
-  return 'parthian (Dev)';
+  return 'I-Invest (Dev)';
 };
 
 export default {
   expo: {
     name: getAppName(),
-    slug: 'parthian',
+    slug: 'I-Invest',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/images/icon.png',
-    scheme: 'parthian',
+    scheme: 'I-Invest',
     userInterfaceStyle: 'automatic',
     // Enable the new Android architecture (Fabric + TurboModules)
     newArchEnabled: true,
@@ -44,7 +44,7 @@ export default {
       },
     },
     android: {
-      package: 'com.parthian.app',
+      package: 'com.I-Invest.app',
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#1A73E8',
@@ -114,6 +114,6 @@ export default {
         projectId: 'be9e6b48-ebf2-403e-b20b-beae1090259f',
       },
     },
-    owner: 'parthian',
+    owner: 'I-Invest',
   },
 };
