@@ -17,6 +17,7 @@ import { BankingInfoBottomSheet } from './components/BankingInfoBottomSheet';
 import { Projects } from './components/Projects';
 import TransactionApprovalBanner from './components/TransactionApprovalBanner';
 import { TransactionHistory } from './components/TransactionHistory';
+import { tokens } from '@/src/constants/tokens';
 
 export default function Home() {
   const transaction = useRecoilValue(transactionState);
@@ -31,7 +32,7 @@ export default function Home() {
   }, []);
 
   return (
-    <SafeScreenView edges={['left', 'right', 'top']}>
+    <SafeScreenView backgroundColor={tokens.colors.background}  edges={['left', 'right', 'top']}>
       <ScrollView contentContainerStyle={globalStyles.containerScroll}>
         <HomeHeader />
         <BalanceDashboard onBankingInfoPress={handleOnBankingInfoPress} />

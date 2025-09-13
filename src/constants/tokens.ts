@@ -4,30 +4,86 @@ export const NAVIGATION_HEADER_HEIGHT = 100;
 
 export const tokens = {
   colors: {
-    // Primary Blues
-    primaryDark: '#0E4690',
-    primary: '#1A73E8', // PRIMARY COLOR
-    primaryLight: '#D1E3FA',
-    primaryLighter: '#E8F1FD',
+    // Primary 
+textPrimaryLightDark:"#2E3F43",
+textSecondaryLightDark:"#000000E5",
+textTertiaryLightDark:"#000000CC",
+textTertiaryLightDark2:"#00000080",
 
-    // Secondary Yellows
-    secondary: '#F9A825', // SECONDARY COLOR
-    secondaryDark: '#E48F06',
+background: '#F6F6F6',
+pinkBackground: '#E8E8FA',
+    // black
+    globalDark: "#000000",
+    globalGray: "#6B7280",
 
-    // Greens
-    green: '#34A853', // SECONDARY GREEN
-    greenDark: '#2A8843', // DARKER GREEN
+    //
+    dashedColor:"#B6C3CA",
 
-    // red
-    red: '#FF4D4F',
+//pink
+pink: "#9793E8",
 
-    transparent: 'transparent',
+//
+progressBarColor: "#8263FF",
+
+//Radial Gradient
+
+color1: "#137DFF",
+color2:"#D5BEFF",
+color3: "#0073FF",
+
+
+//Blue
+
+blue: "#1868DB",
+secondaryBlue:"#0078DB",
+lightFairBlue: "#643DFF",
+lightFairerBlue:"#E5F1FB",
+lightBlue:"#0089CF",
+lighterBlue:"#33A1D9",
+lighterBlue2:"#8AC9E9",
+lightestBlue:"#B0DAF0",
+deepBlue:"#006193",
+deeperBlue:"#57727E",
+yellow: "#FCA700",
+
+textBorder:"#0000001A",
+gradientColor:"#FFFFFF80",
+gradientColor2:"#8484844D",
+
+//purple
+sharpPurple:"#411363",
+sharpPurple2:"#431362",
+lightPurple: "#AEA6FF",
+
+//text
+lightText:"#858F91",
+text:"#35454C",
+textGray2:"#758183",
+textSecondary:"#28353A",
+textTetiary:"#1C2F33",
+textGray: "#8E8D93",
+textBlue: "#57727E",
+textBackground:"#E6F3FA",
+textBackground2:"#F5F6F6",
+textBackground3:"#0000000D",
+
+//red
+red:"#EA3336",
+
+//green
+
+green:"#18A540",
+stockGreen:"#43F375",
+troveUIGreen:"#1CD155",
 
     // Neutrals
     black: '#121212', // BLACK
     darkGray: '#586474',
-    gray: '#99A4B2',
-    lightGray: '#E6E6E6',
+    gray: '#445963',
+    lightGray: '#EFF2F3',
+    deepGray:"#8097A2",
+
+
     lighterGray: '#F1F1F1',
     extraLightGray: '#FAFAFA',
     white: '#FFFFFF', // WHITE
