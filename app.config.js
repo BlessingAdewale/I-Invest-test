@@ -1,0 +1,119 @@
+const IS_PROD = process.env.APP_VARIANT === 'production';
+const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
+
+const getUniqueIdentifier = () => {
+  if (IS_PROD) {
+    return 'com.parthian.app';
+  }
+
+  if (IS_PREVIEW) {
+    return 'com.parthian.app.preview';
+  }
+
+  return 'com.parthian.app.dev';
+};
+
+const getAppName = () => {
+  if (IS_PROD) {
+    return 'parthian';
+  }
+
+  if (IS_PREVIEW) {
+    return 'parthian (Preview)';
+  }
+
+  return 'parthian (Dev)';
+};
+
+export default {
+  expo: {
+    name: getAppName(),
+    slug: 'parthian',
+    version: '1.0.0',
+    orientation: 'portrait',
+    icon: './assets/images/icon.png',
+    scheme: 'parthian',
+    userInterfaceStyle: 'automatic',
+    // Enable the new Android architecture (Fabric + TurboModules)
+    newArchEnabled: true,
+    ios: {
+      bundleIdentifier: getUniqueIdentifier(),
+      supportsTablet: true,
+      infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
+      },
+    },
+    android: {
+      package: 'com.parthian.app',
+      adaptiveIcon: {
+        foregroundImage: './assets/images/adaptive-icon.png',
+        backgroundColor: '#1A73E8',
+      },
+    },
+    web: {
+      bundler: 'metro',
+      output: 'static',
+      favicon: './assets/images/favicon.png',
+    },
+    plugins: [
+      'expo-router',
+      [
+        'expo-splash-screen',
+        {
+          image: './assets/images/splash-icon.png',
+          imageWidth: 300,
+          resizeMode: 'contain',
+          backgroundColor: '#1A73E8',
+        },
+      ],
+      [
+        'expo-secure-store',
+        {
+          configureAndroidBackup: true,
+          faceIDPermission:
+            'Allow $(PRODUCT_NAME) to access your Face ID biometric data.',
+        },
+      ],
+      [
+        'expo-image-picker',
+        {
+          photosPermission: 'Allow $(PRODUCT_NAME) to access your photos.',
+        },
+      ],
+      [
+        'expo-font',
+        {
+          fonts: [
+            './assets/fonts/InterTight-Medium.ttf',
+            './assets/fonts/InterTight-Regular.ttf',
+            './assets/fonts/InterTight-SemiBold.ttf',
+          ],
+        },
+      ],
+      [
+        'react-native-edge-to-edge',
+        {
+          android: {
+            enforceNavigationBarContrast: false,
+          },
+        },
+      ],
+    ],
+    experiments: {
+      typedRoutes: true,
+    },
+    updates: {
+      url: 'https://u.expo.dev/5ec43922-0773-4c4a-a647-b3335217c838',
+    },
+    runtimeVersion: {
+      policy: 'appVersion',
+    },
+    extra: {
+      APP_VARIANT: process.env.APP_VARIANT,
+      eas: {
+        projectId: 'be9e6b48-ebf2-403e-b20b-beae1090259f',
+      },
+    },
+    owner: 'parthian',
+  },
+};

@@ -1,0 +1,44 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "jsx": "react-native",
+    "strict": true,
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "eslint.config.mjs",
+    "babel.config.js",
+    "metro.config.js",
+    "dist",
+    "tools",
+    "app-builds",
+    "android",
+    "ios",
+    ".circleci",
+    ".github",
+    ".husky",
+    ".jest",
+    "coverage",
+    ".maestro"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "app.config.js"
+  ]
+}

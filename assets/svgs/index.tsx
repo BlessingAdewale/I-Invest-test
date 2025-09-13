@@ -1,0 +1,10 @@
+export { ArrowRightIcon } from './ArrowRightIcon';
+export { BankIcon } from './BankIcon';
+export { EstateIcon } from './EstateIcon';
+export { GalleryIcon } from './GalleryIcon';
+export { HamburgerIcon } from './HamburgerIcon';
+export { HomeIcon } from './HomeIcon';
+export { NotificationIcon } from './NotificationIcon';
+export { PollsIcon } from './PollsIcon';
+export { ProjectIcon } from './ProjectIcon';
+export { SettingsIcon } from './SettingsIcon';
