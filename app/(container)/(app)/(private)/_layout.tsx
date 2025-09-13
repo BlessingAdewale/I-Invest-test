@@ -8,7 +8,7 @@ import { NAVIGATION_HEADER_HEIGHT, tokens } from '@/src/constants/tokens';
 function PrivateLayout() {
   const authToken = useRecoilValue(authTokenState);
 
-  if (!authToken) {
+  if (authToken) {
     return <Redirect href="/" />;
   }
 
