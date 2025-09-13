@@ -29,14 +29,26 @@ export type TypographyProps = TextProps & {
     | "latoEmphasisBold16"
     | "latoSubtitleMedium20"
     | "latoHeadlineBold32"
+
+    //SourceSans 
+
+      | "sourceSansRegular14"
+    | "sourceSansMedium16"
+    | "sourceSansSemiBold16"
+    | "sourceSansBold20"
+    | "sourceSansBold32"
+    |"sourceSansBold13"
     // TikTokSans
+    | "tiktokBodyRegular12"
+    | "tiktokBodyRegular13"
     | "tiktokBodyRegular14"
     | "tiktokBodyMedium14"
     | "tiktokBodyMedium16"
     | "tiktokEmphasisBold16"
     | "tiktokSubtitleMedium20"
     | "tiktokHeadlineBold32"
-    | "tiktokHeadlineBold17";
+    | "tiktokHeadlineBold17"
+    | "tiktokHeadlineBold12";
   padding?: keyof typeof tokens.spacing;
   paddingX?: keyof typeof tokens.spacing;
   paddingY?: keyof typeof tokens.spacing;
@@ -99,13 +111,22 @@ const TypographyComponent = forwardRef<Text, TypographyProps>(
         latoSubtitleMedium20: styles.latoSubtitleMedium20,
         latoHeadlineBold32: styles.latoHeadlineBold32,
 
+        sourceSansRegular14: styles.sourceSansRegular14,
+sourceSansMedium16: styles.sourceSansMedium16,
+sourceSansSemiBold16: styles.sourceSansSemiBold16,
+sourceSansBold20: styles.sourceSansBold20,
+sourceSansBold32: styles.sourceSansBold32,
+sourceSansBold13: styles.sourceSansBold13,
         // ----- TikTokSans -----
+         tiktokBodyRegular13: styles.tiktokBodyRegular13,
+          tiktokBodyRegular12: styles.tiktokBodyRegular12,
         tiktokBodyRegular14: styles.tiktokBodyRegular14,
         tiktokBodyMedium14:   styles.tiktokBodyMedium14,
         tiktokBodyMedium16: styles.tiktokBodyMedium16,
         tiktokEmphasisBold16: styles.tiktokEmphasisBold16,
         tiktokSubtitleMedium20: styles.tiktokSubtitleMedium20,
         tiktokHeadlineBold17: styles.tiktokHeadlineBold17,
+        tiktokHeadlineBold12: styles.tiktokHeadlineBold12,
         tiktokHeadlineBold32: styles.tiktokHeadlineBold32,
       }[variant];
     }, [variant]);
@@ -164,7 +185,8 @@ const TypographyComponent = forwardRef<Text, TypographyProps>(
 const styles = StyleSheet.create({
   // ----- EncodeSansSemiExpanded -----
   EncodeSansSemiExpandedBodyRegular14: {
-    fontFamily: "EncodeSansSemiExpanded-Regular",
+    fontWeight: '700',
+    fontFamily: "EncodeSansSemiExpanded-Bold",
     fontSize: normalize(14),
     // lineHeight: normalize(20),
   },
@@ -215,11 +237,55 @@ const styles = StyleSheet.create({
     fontSize: normalize(32),
     lineHeight: normalize(40),
   },
+    // ----- SourceSans -----
+  sourceSansRegular14: {
+    fontFamily: "SourceSans-Regular",
+    fontSize: normalize(14),
+    lineHeight: normalize(20),
+  },
+  sourceSansMedium16: {
+    fontFamily: "SourceSans-Medium",
+    fontSize: normalize(16),
+    lineHeight: normalize(22),
+  },
+  sourceSansSemiBold16: {
+    fontFamily: "SourceSans-SemiBold",
+    fontSize: normalize(16),
+    lineHeight: normalize(22),
+  },
+  sourceSansBold20: {
+    fontFamily: "SourceSans-Bold",
+    fontSize: normalize(20),
+    lineHeight: normalize(26),
+  },
+  sourceSansBold32: {
+    fontFamily: "SourceSans-Bold",
+    fontSize: normalize(32),
+    lineHeight: normalize(40),
+  },
+  sourceSansBold13: {
+    fontFamily: "SourceSans-Bold",
+    fontSize: normalize(13),
+      fontWeight: '700',
+    // lineHeight: normalize(40),
+  },
 
   // ----- TikTokSans -----
   tiktokBodyRegular14: {
     fontFamily: "TikTokSans-Regular",
+    fontWeight: "700",
     fontSize: normalize(14),
+    lineHeight: normalize(20),
+  },
+  tiktokBodyRegular13: {
+    fontFamily: "TikTokSans-Regular",
+    fontWeight: "400",
+    fontSize: normalize(13),
+    lineHeight: normalize(20),
+  },
+  tiktokBodyRegular12: {
+    fontFamily: "TikTokSans-Regular",
+    fontSize: normalize(12),
     lineHeight: normalize(20),
   },
   tiktokBodyMedium14: {
@@ -228,12 +294,14 @@ const styles = StyleSheet.create({
   },
   tiktokBodyMedium16: {
     fontFamily: "TikTokSans-Medium",
-    fontSize: normalize(16),
+    fontWeight: '500',
+    fontSize: normalize(13),
     lineHeight: normalize(22),
   },
   tiktokEmphasisBold16: {
     fontFamily: "TikTokSans-SemiBold",
-    fontSize: normalize(16),
+    fontWeight: '600',
+    fontSize: normalize(13),
     lineHeight: normalize(22),
   },
   tiktokSubtitleMedium20: {
@@ -252,6 +320,13 @@ const styles = StyleSheet.create({
     fontSize: normalize(17),
 
   },
+  tiktokHeadlineBold12: {
+    fontFamily: "TikTokSans-Bold",
+    fontWeight: '900',
+    fontSize: normalize(12),
+
+  },
+ 
 });
 
 TypographyComponent.displayName = "TypographyComponent";

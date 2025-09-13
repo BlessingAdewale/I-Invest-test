@@ -1,16 +1,16 @@
-import { router } from 'expo-router';
-import { useCallback } from 'react';
+import { router } from "expo-router";
+import { useCallback } from "react";
 
-import { Box } from '@/src/components/Box';
-import { SectionHeader } from '@/src/components/SectionHeader';
-import { Typography } from '@/src/components/Typography';
-import { tokens } from '@/src/constants/tokens';
+import { Box } from "@/src/components/Box";
+import { SectionHeader } from "@/src/components/SectionHeader";
+import { Typography } from "@/src/components/Typography";
+import { tokens } from "@/src/constants/tokens";
 
-import { ProgressBarCard } from './ProgressBarCard';
-import { AmountDisplay } from '../../Home/components/AmountDisplay';
-import { BankingInfoAndPayment } from '../../Home/components/BankingInfoAndPayment';
+import { ProgressBarCard } from "./ProgressBarCard";
+import { AmountDisplay } from "../../Home/components/AmountDisplay";
+import { BankingInfoAndPayment } from "../../Home/components/BankingInfoAndPayment";
 
-import type { TTransaction } from '../../Home/components/TransactionItem';
+import type { TTransaction } from "../../Home/components/OrderItem";
 
 type TProjectViewData = {
   title: string;
@@ -39,7 +39,7 @@ export const ViewProjectListHeader = ({
   onSeeAllTransactionsPress,
 }: TViewProjectListHeader) => {
   const numericContributed = parseFloat(
-    data.amount_that_has_been_contributed.replace(/[^0-9.-]+/g, '')
+    data.amount_that_has_been_contributed.replace(/[^0-9.-]+/g, "")
   );
   const zeroAmountColor =
     numericContributed === 0 ? tokens.colors.gray : tokens.colors.darkGray;
@@ -48,7 +48,7 @@ export const ViewProjectListHeader = ({
     if (onSeeAllTransactionsPress) {
       onSeeAllTransactionsPress();
     } else {
-      router.navigate('/view-project-transaction');
+      router.navigate("/view-project-transaction");
     }
   }, [onSeeAllTransactionsPress]);
 
@@ -72,7 +72,7 @@ export const ViewProjectListHeader = ({
 
       <BankingInfoAndPayment
         onPress={percentComplete < 100 ? onMakePayment : undefined}
-        text={percentComplete >= 100 ? 'Download report' : 'Make a payment'}
+        text={percentComplete >= 100 ? "Download report" : "Make a payment"}
       />
 
       <ProgressBarCard

@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-import { BadgeIcon } from '@/assets/svgs/BadgeIcon';
+import { BadgeIcon } from '@/assets/svgs/MarketIcon';
 import { Box } from '@/src/components/Box';
 import { Typography } from '@/src/components/Typography';
 import {

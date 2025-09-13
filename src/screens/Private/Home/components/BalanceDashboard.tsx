@@ -1,60 +1,63 @@
-import AntDesign from '@expo/vector-icons/AntDesign';
-import { router } from 'expo-router';
-import React from 'react';
-import { Pressable } from 'react-native';
-
+import React, { useEffect, useState } from 'react';
 import { Box } from '@/src/components/Box';
 import { Typography } from '@/src/components/Typography';
-import { IMAGE_SIZE } from '@/src/constants/globalStyles';
 import { tokens } from '@/src/constants/tokens';
 
 import { AmountDisplay } from './AmountDisplay';
-import { BankingInfoAndPayment } from './BankingInfoAndPayment';
 import { useRecoilValue } from 'recoil';
 import { currencyTabState, USD_TAB } from '@/src/constants/recoil/recoilAtom';
 import { ArrowUpIcon } from '@/assets/svgs/ArrowUpIcon';
+
+import  { useSharedValue, withTiming, Easing, useAnimatedReaction, runOnJS } from 'react-native-reanimated';
 
 type TUserDetails = {
   walletBalance: string;
 };
 
-
-
 type BalanceDashboardProps = {
-  onBankingInfoPress: () => void;
+  onBankingInfoPress?: () => void;
 };
 
-export const BalanceDashboard = ({
-  onBankingInfoPress,
-}: BalanceDashboardProps) => {
-
-  
+export const BalanceDashboard = ({ onBankingInfoPress }: BalanceDashboardProps) => {
   const activeTab = useRecoilValue(currencyTabState);
 
   const userDetails: TUserDetails = {
     walletBalance: activeTab === USD_TAB ? '$2,800.34' : '₦24,262,450.30',
   };
-  // Extract numerical value from balance string (e.g., "$7,022.22" → 7022.22)
+
   const numericBalance =
     parseFloat(userDetails.walletBalance.replace(/[^0-9.-]+/g, '')) || 0;
   const isZeroBalance = numericBalance === 0;
+  const zeroAmount = isZeroBalance ? tokens.colors.gray : tokens.colors.darkGray;
 
-  const zeroAmount = isZeroBalance
-    ? tokens.colors.gray
-    : tokens.colors.darkGray;
+  const percentShared = useSharedValue(0);
+  const [percent, setPercent] = useState(0);
 
+  useAnimatedReaction(
+    () => percentShared.value,
+    (value) => {
+      runOnJS(setPercent)(value);
+    },
+    []
+  );
+
+  useEffect(() => {
+    percentShared.value = withTiming(2.16, {
+      duration: 1500,
+      easing: Easing.out(Easing.cubic),
+    });
+  }, []);
 
   return (
-    <Box paddingTop={12} paddingX={8}>
+    <Box paddingTop={12} paddingBottom={20} paddingX={8}>
       <Typography
         variant="tiktokBodyMedium14"
-        color='text'
-        style={{
-          color: zeroAmount,
-        }}
+        color="text"
+        style={{ color: zeroAmount }}
       >
-     Portfolio Balance
+        Portfolio Balance
       </Typography>
+
       <Box
         paddingTop={8}
         flexDirection="row"
@@ -63,13 +66,28 @@ export const BalanceDashboard = ({
       >
         <AmountDisplay amount={userDetails.walletBalance} />
       </Box>
-<Box flexDirection='row' alignItems='center' >
-  <Box flexDirection='row' alignItems='center' >
-    <ArrowUpIcon />
-    <Typography>2.16%</Typography>
-  </Box>
-  <Typography>This Month</Typography>
-</Box>
+
+      <Box paddingTop={4} flexDirection="row" alignItems="center">
+        <Box
+          flexDirection="row"
+          alignItems="center"
+          style={{ backgroundColor: tokens.colors.stockGreen }}
+        >
+          <Box flexDirection="row" alignItems="center" paddingY={6} marginX={8}>
+            <ArrowUpIcon />
+            <Typography variant="tiktokHeadlineBold12" marginLeft={4}>
+              {percent.toFixed(2)}%
+            </Typography>
+          </Box>
+        </Box>
+        <Typography
+          paddingLeft={4}
+          variant="tiktokEmphasisBold16"
+          color="textGray"
+        >
+          This Month
+        </Typography>
+      </Box>
     </Box>
   );
 };
