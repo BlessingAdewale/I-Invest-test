@@ -18,6 +18,14 @@ export const createAccountState = atom<
   default: null,
 });
 
+export const USD_TAB = 'USD';
+export const NGN_TAB = 'NGN';
+
+export const currencyTabState = atom<string>({
+  key: 'currencyTabState',
+  default: USD_TAB,
+});
+
 export type TTransactionState = {
   project: string;
   description: string;

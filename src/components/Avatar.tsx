@@ -27,10 +27,12 @@ export const Avatar = memo(
         style={containerStyle}
       >
         <LinearGradient
-          colors={[tokens.colors.blue, tokens.colors.yellow]}
+          colors={[tokens.colors.yellow, tokens.colors.blue]}
+        start={{ x: 0.2, y: 0.8 }} 
+  end={{ x: 0.8, y: 0.2 }} 
           style={[
             styles.gradientBorder,
-            { width: size, height: size, borderRadius: size / 2 },
+            { width: size+ 1, height: size+1, borderRadius: size / 2 },
           ]}
         >
           <Image
@@ -42,7 +44,6 @@ export const Avatar = memo(
             style={{
               width: size - 2, 
               height: size - 2,
-              borderWidth: 1.41,
               borderRadius: (size-4) / 2,
             }}
             contentFit="cover"
@@ -58,7 +59,7 @@ Avatar.displayName = 'Avatar';
 
 const styles = StyleSheet.create({
   gradientBorder: {
-    padding: 2, // thickness of the gradient border
+    padding: 2, 
     justifyContent: 'center',
     alignItems: 'center',
   },

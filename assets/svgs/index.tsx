@@ -1,4 +1,4 @@
-export { ArrowRightIcon } from './ArrowRightIcon';
+export { ArrowRightIcon } from './ArrowUpIcon';
 export { BankIcon } from './BankIcon';
 export { EstateIcon } from './EstateIcon';
 export { GalleryIcon } from './GalleryIcon';

@@ -17,12 +17,12 @@ export type TypographyProps = TextProps & {
   textAlign?: TextStyle["textAlign"];
   color?: keyof typeof tokens.colors;
   variant?:
-    // SourceSans
-    | "sourceBodyRegular14"
-    | "sourceBodyMedium16"
-    | "sourceEmphasisBold16"
-    | "sourceSubtitleMedium20"
-    | "sourceHeadlineBold32"
+    // EncodeSansSemiExpanded
+    | "EncodeSansSemiExpandedBodyRegular14"
+    | "EncodeSansSemiExpandedBodyMedium16"
+    | "EncodeSansSemiExpandedEmphasisBold16"
+    | "EncodeSansSemiExpandedSubtitleMedium20"
+    | "EncodeSansSemiExpandedHeadlineBold32"
     // Lato
     | "latoBodyRegular14"
     | "latoBodyMedium16"
@@ -31,10 +31,12 @@ export type TypographyProps = TextProps & {
     | "latoHeadlineBold32"
     // TikTokSans
     | "tiktokBodyRegular14"
+    | "tiktokBodyMedium14"
     | "tiktokBodyMedium16"
     | "tiktokEmphasisBold16"
     | "tiktokSubtitleMedium20"
-    | "tiktokHeadlineBold32";
+    | "tiktokHeadlineBold32"
+    | "tiktokHeadlineBold17";
   padding?: keyof typeof tokens.spacing;
   paddingX?: keyof typeof tokens.spacing;
   paddingY?: keyof typeof tokens.spacing;
@@ -58,7 +60,7 @@ const TypographyComponent = forwardRef<Text, TypographyProps>(
     {
       children,
       textAlign,
-      variant = "sourceBodyMedium16",
+      variant = "EncodeSansSemiExpandedBodyMedium16",
       color = "black",
       padding,
       paddingBottom,
@@ -83,12 +85,12 @@ const TypographyComponent = forwardRef<Text, TypographyProps>(
   ) => {
     const variantStyle = useMemo(() => {
       return {
-        // ----- SourceSans -----
-        sourceBodyRegular14: styles.sourceBodyRegular14,
-        sourceBodyMedium16: styles.sourceBodyMedium16,
-        sourceEmphasisBold16: styles.sourceEmphasisBold16,
-        sourceSubtitleMedium20: styles.sourceSubtitleMedium20,
-        sourceHeadlineBold32: styles.sourceHeadlineBold32,
+        // ----- EncodeSansSemiExpanded -----
+        EncodeSansSemiExpandedBodyRegular14: styles.EncodeSansSemiExpandedBodyRegular14,
+        EncodeSansSemiExpandedBodyMedium16: styles.EncodeSansSemiExpandedBodyMedium16,
+        EncodeSansSemiExpandedEmphasisBold16: styles.EncodeSansSemiExpandedEmphasisBold16,
+        EncodeSansSemiExpandedSubtitleMedium20: styles.EncodeSansSemiExpandedSubtitleMedium20,
+        EncodeSansSemiExpandedHeadlineBold32: styles.EncodeSansSemiExpandedHeadlineBold32,
 
         // ----- Lato -----
         latoBodyRegular14: styles.latoBodyRegular14,
@@ -99,9 +101,11 @@ const TypographyComponent = forwardRef<Text, TypographyProps>(
 
         // ----- TikTokSans -----
         tiktokBodyRegular14: styles.tiktokBodyRegular14,
+        tiktokBodyMedium14:   styles.tiktokBodyMedium14,
         tiktokBodyMedium16: styles.tiktokBodyMedium16,
         tiktokEmphasisBold16: styles.tiktokEmphasisBold16,
         tiktokSubtitleMedium20: styles.tiktokSubtitleMedium20,
+        tiktokHeadlineBold17: styles.tiktokHeadlineBold17,
         tiktokHeadlineBold32: styles.tiktokHeadlineBold32,
       }[variant];
     }, [variant]);
@@ -158,29 +162,29 @@ const TypographyComponent = forwardRef<Text, TypographyProps>(
 );
 
 const styles = StyleSheet.create({
-  // ----- SourceSans -----
-  sourceBodyRegular14: {
-    fontFamily: "SourceSans-Regular",
+  // ----- EncodeSansSemiExpanded -----
+  EncodeSansSemiExpandedBodyRegular14: {
+    fontFamily: "EncodeSansSemiExpanded-Regular",
     fontSize: normalize(14),
-    lineHeight: normalize(20),
+    // lineHeight: normalize(20),
   },
-  sourceBodyMedium16: {
-    fontFamily: "SourceSans-Medium",
+  EncodeSansSemiExpandedBodyMedium16: {
+    fontFamily: "EncodeSansSemiExpanded-Medium",
+    fontSize: normalize(20),
+    // lineHeight: normalize(22),
+  },
+  EncodeSansSemiExpandedEmphasisBold16: {
+    fontFamily: "EncodeSansSemiExpanded-SemiBold",
     fontSize: normalize(16),
     lineHeight: normalize(22),
   },
-  sourceEmphasisBold16: {
-    fontFamily: "SourceSans-SemiBold",
-    fontSize: normalize(16),
-    lineHeight: normalize(22),
-  },
-  sourceSubtitleMedium20: {
-    fontFamily: "SourceSans-Medium",
+  EncodeSansSemiExpandedSubtitleMedium20: {
+    fontFamily: "EncodeSansSemiExpanded-Medium",
     fontSize: normalize(20),
     lineHeight: normalize(26),
   },
-  sourceHeadlineBold32: {
-    fontFamily: "SourceSans-Bold",
+  EncodeSansSemiExpandedHeadlineBold32: {
+    fontFamily: "EncodeSansSemiExpanded-Bold",
     fontSize: normalize(32),
     lineHeight: normalize(40),
   },
@@ -218,6 +222,10 @@ const styles = StyleSheet.create({
     fontSize: normalize(14),
     lineHeight: normalize(20),
   },
+  tiktokBodyMedium14: {
+    fontFamily: "TikTokSans-Medium",
+    fontSize: normalize(14),
+  },
   tiktokBodyMedium16: {
     fontFamily: "TikTokSans-Medium",
     fontSize: normalize(16),
@@ -237,6 +245,12 @@ const styles = StyleSheet.create({
     fontFamily: "TikTokSans-Bold",
     fontSize: normalize(32),
     lineHeight: normalize(40),
+  },
+  tiktokHeadlineBold17: {
+    fontFamily: "TikTokSans-Bold",
+    fontWeight: '700',
+    fontSize: normalize(17),
+
   },
 });
 

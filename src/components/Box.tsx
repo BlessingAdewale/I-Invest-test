@@ -32,12 +32,18 @@ export type BoxProps = ViewProps & {
   rowGap?: FlexStyle['rowGap'];
   flex?: FlexStyle['flex'];
   flexBasis?: FlexStyle['flexBasis'];
+  flexShrink?: FlexStyle['flexShrink'];
   flexWrap?: FlexStyle['flexWrap'];
   flexDirection?: FlexStyle['flexDirection'];
   alignItems?: FlexStyle['alignItems'];
   alignSelf?: FlexStyle['alignSelf'];
   alignContent?: FlexStyle['alignContent'];
   justifyContent?: FlexStyle['justifyContent'];
+  height?: FlexStyle['height'];
+  width?: FlexStyle['width'];
+  borderRadius?: keyof typeof tokens.borderRadius;
+  borderColor?: keyof typeof tokens.colors;
+  borderWidth?: keyof typeof tokens.borderWidth;
 };
 
 const BoxComponent = forwardRef<View, BoxProps>(
@@ -58,6 +64,8 @@ const BoxComponent = forwardRef<View, BoxProps>(
       marginRight,
       marginTop,
       marginX,
+      height,
+      width,
       marginY,
       gap,
       flex,
@@ -66,8 +74,12 @@ const BoxComponent = forwardRef<View, BoxProps>(
       flexDirection,
       alignContent,
       alignItems,
+      flexShrink,
       alignSelf,
       justifyContent,
+      borderRadius,
+      borderWidth,
+      borderColor,
       style,
       ...rest
     },
@@ -75,7 +87,8 @@ const BoxComponent = forwardRef<View, BoxProps>(
   ) => {
     const styleObject: StyleProp<ViewStyle> = useMemo(
       () => ({
-        backgroundColor: tokens.colors[backgroundColor],
+backgroundColor,
+borderColor,
         padding,
         paddingHorizontal: paddingX,
         paddingVertical: paddingY,
@@ -84,24 +97,34 @@ const BoxComponent = forwardRef<View, BoxProps>(
         paddingBottom,
         paddingRight,
         margin,
+        height,
+        width,
         marginHorizontal: marginX,
         marginVertical: marginY,
         marginTop,
         marginLeft,
         marginBottom,
         marginRight,
+
         gap,
         flex,
         flexBasis,
+        flexShrink,
         flexDirection,
         flexWrap,
         alignContent,
+
         alignItems,
         alignSelf,
+        borderRadius: borderRadius
+          ? tokens.borderRadius[borderRadius]
+          : undefined,
         justifyContent,
       }),
       [
+        borderColor,
         backgroundColor,
+        borderWidth,
         padding,
         paddingX,
         paddingY,
@@ -117,13 +140,17 @@ const BoxComponent = forwardRef<View, BoxProps>(
         marginBottom,
         marginRight,
         gap,
+        height,
+        width,
         flex,
+        flexShrink,
         flexBasis,
         flexDirection,
         flexWrap,
         alignContent,
         alignItems,
         alignSelf,
+        borderRadius,
         justifyContent,
       ]
     );

@@ -10,15 +10,15 @@ import { tokens } from '@/src/constants/tokens';
 
 import { AmountDisplay } from './AmountDisplay';
 import { BankingInfoAndPayment } from './BankingInfoAndPayment';
+import { useRecoilValue } from 'recoil';
+import { currencyTabState, USD_TAB } from '@/src/constants/recoil/recoilAtom';
+import { ArrowUpIcon } from '@/assets/svgs/ArrowUpIcon';
 
 type TUserDetails = {
   walletBalance: string;
 };
 
-const userDetails: TUserDetails = {
 
-  walletBalance: '$10,000,001,022.22',
-};
 
 type BalanceDashboardProps = {
   onBankingInfoPress: () => void;
@@ -27,6 +27,13 @@ type BalanceDashboardProps = {
 export const BalanceDashboard = ({
   onBankingInfoPress,
 }: BalanceDashboardProps) => {
+
+  
+  const activeTab = useRecoilValue(currencyTabState);
+
+  const userDetails: TUserDetails = {
+    walletBalance: activeTab === USD_TAB ? '$2,800.34' : '₦24,262,450.30',
+  };
   // Extract numerical value from balance string (e.g., "$7,022.22" → 7022.22)
   const numericBalance =
     parseFloat(userDetails.walletBalance.replace(/[^0-9.-]+/g, '')) || 0;
@@ -36,19 +43,17 @@ export const BalanceDashboard = ({
     ? tokens.colors.gray
     : tokens.colors.darkGray;
 
-  const handlePress = () => {
-    router.navigate('/withdraw-cash');
-  };
 
   return (
-    <Box paddingTop={32}>
+    <Box paddingTop={12} paddingX={8}>
       <Typography
-        variant="bodyMedium16"
+        variant="tiktokBodyMedium14"
+        color='text'
         style={{
           color: zeroAmount,
         }}
       >
-     Portfolio balance
+     Portfolio Balance
       </Typography>
       <Box
         paddingTop={8}
@@ -57,31 +62,14 @@ export const BalanceDashboard = ({
         alignItems="center"
       >
         <AmountDisplay amount={userDetails.walletBalance} />
-        <Pressable onPress={handlePress}>
-          <Box
-            alignItems="center"
-            justifyContent="center"
-            style={{
-              backgroundColor: isZeroBalance
-                ? tokens.colors.gray
-                : tokens.colors.primary,
-              borderRadius: tokens.borderRadius.circle,
-              width: IMAGE_SIZE,
-              height: IMAGE_SIZE,
-            }}
-          >
-            <AntDesign
-              name="arrowdown"
-              size={tokens.spacing[24]}
-              color={tokens.colors.white}
-            />
-          </Box>
-        </Pressable>
       </Box>
-      <BankingInfoAndPayment
-        text="Bank account info"
-        onPress={onBankingInfoPress}
-      />
+<Box flexDirection='row' alignItems='center' >
+  <Box flexDirection='row' alignItems='center' >
+    <ArrowUpIcon />
+    <Typography>2.16%</Typography>
+  </Box>
+  <Typography>This Month</Typography>
+</Box>
     </Box>
   );
 };

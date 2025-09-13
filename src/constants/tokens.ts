@@ -10,6 +10,7 @@ textPrimaryLightDark:"#2E3F43",
 textSecondaryLightDark:"#000000E5",
 textTertiaryLightDark:"#000000CC",
 textTertiaryLightDark2:"#00000080",
+transparent: 'transparent',
 
 background: '#F6F6F6',
 pinkBackground: '#E8E8FA',

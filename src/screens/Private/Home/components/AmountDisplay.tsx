@@ -15,9 +15,9 @@ export const AmountDisplay = ({ amount }: TAmountDisplayProps) => {
 
   return (
     <Box flex={1} flexDirection="row" alignItems="baseline">
-      <Typography variant="headlineBold32">{`${mainPart}`}</Typography>
+      <Typography color='globalDark' variant="EncodeSansSemiExpandedHeadlineBold32">{`${mainPart}`}</Typography>
       {decimalPart && (
-        <Typography variant="headlineBold20">{`.${decimalPart}`}</Typography>
+        <Typography variant="EncodeSansSemiExpandedSubtitleMedium20" color='text'>{`.${decimalPart}`}</Typography>
       )}
     </Box>
   );
