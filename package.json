@@ -1,5 +1,5 @@
 {
-  "name": "I-Invest",
+  "name": "parthian",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -44,6 +44,7 @@
     "expo-haptics": "~14.0.1",
     "expo-image": "~2.0.7",
     "expo-image-picker": "~16.0.6",
+    "expo-linear-gradient": "~14.0.2",
     "expo-linking": "~7.0.5",
     "expo-router": "~4.0.19",
     "expo-secure-store": "~14.0.1",

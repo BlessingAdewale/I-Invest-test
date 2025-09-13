@@ -12,25 +12,11 @@ import { AmountDisplay } from './AmountDisplay';
 import { BankingInfoAndPayment } from './BankingInfoAndPayment';
 
 type TUserDetails = {
-  firstName: string;
-  lastName: string;
-  address: string;
-  role: 'admin' | 'residence';
-  status: string;
-  houseNumber: string;
-  profileImage: string;
   walletBalance: string;
 };
 
 const userDetails: TUserDetails = {
-  firstName: 'OluwaTobi',
-  lastName: 'Ozenoua',
-  address: 'Savannah Estate, 3517 W. Gray St. Utica.',
-  role: 'residence',
-  status: 'Chairman',
-  houseNumber: 'House B40',
-  profileImage:
-    'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
+
   walletBalance: '$10,000,001,022.22',
 };
 
@@ -62,7 +48,7 @@ export const BalanceDashboard = ({
           color: zeroAmount,
         }}
       >
-        Total balance
+     Portfolio balance
       </Typography>
       <Box
         paddingTop={8}

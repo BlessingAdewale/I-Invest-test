@@ -28,7 +28,7 @@ const getAppName = () => {
 export default {
   expo: {
     name: getAppName(),
-    slug: 'I-Invest',
+    slug: 'parthian',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/images/icon.png',
@@ -63,7 +63,7 @@ export default {
           image: './assets/images/splash-icon.png',
           imageWidth: 300,
           resizeMode: 'contain',
-          backgroundColor: '#1A73E8',
+          backgroundColor: '#411363',
         },
       ],
       [
@@ -126,6 +126,6 @@ export default {
         projectId: 'be9e6b48-ebf2-403e-b20b-beae1090259f',
       },
     },
-    owner: 'I-Invest',
+    owner: 'parthian',
   },
 };

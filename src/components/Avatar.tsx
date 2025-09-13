@@ -6,41 +6,49 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { tokens } from '../constants/tokens';
+import { ACTIVE_OPACITY } from '../constants/globalStyles';
 
-type AvaterProps = {
+type AvatarProps = {
   uri?: string;
   size?: number;
   containerStyle?: StyleProp<ViewStyle>;
   onPress?: () => void;
 };
 
-const DEFAULT_IMAGE_URI =
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww';
-
 export const Avatar = memo(
-  ({ uri, size = 100, containerStyle, onPress }: AvaterProps) => {
+  ({ uri, size = 40, containerStyle, onPress }: AvatarProps) => {
     return (
       <TouchableOpacity
-        activeOpacity={0.8}
+        activeOpacity={ACTIVE_OPACITY}
         onPress={onPress}
-        style={[
-          {
-            width: size,
-            height: size,
-            borderRadius: size / 2,
-          },
-          styles.container,
-          containerStyle,
-        ]}
+        style={containerStyle}
       >
-        <Image
-          source={{ uri: uri || DEFAULT_IMAGE_URI }}
-          style={[styles.img, { borderRadius: size / 2 }]}
-          contentFit="cover"
-          transition={500}
-        />
+        <LinearGradient
+          colors={[tokens.colors.blue, tokens.colors.yellow]}
+          style={[
+            styles.gradientBorder,
+            { width: size, height: size, borderRadius: size / 2 },
+          ]}
+        >
+          <Image
+            source={
+              uri
+                ? { uri }
+                : require('../../assets/images/image.png')
+            }
+            style={{
+              width: size - 2, 
+              height: size - 2,
+              borderWidth: 1.41,
+              borderRadius: (size-4) / 2,
+            }}
+            contentFit="cover"
+            transition={500}
+          />
+        </LinearGradient>
       </TouchableOpacity>
     );
   }
@@ -49,10 +57,9 @@ export const Avatar = memo(
 Avatar.displayName = 'Avatar';
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: tokens.colors.lightGray,
-  },
-  img: {
-    flex: 1,
+  gradientBorder: {
+    padding: 2, // thickness of the gradient border
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

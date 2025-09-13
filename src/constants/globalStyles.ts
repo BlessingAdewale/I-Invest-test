@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 
 import { tokens } from './tokens';
 
-export const PADDING_HORIZONTAL = 16;
+export const PADDING_HORIZONTAL = 8;
 
 export const ACTIVE_OPACITY = 0.7;
 
-export const IMAGE_SIZE = 56;
+export const IMAGE_SIZE = 40;
 
 export const globalStyles = StyleSheet.create({
   authWrapper: {

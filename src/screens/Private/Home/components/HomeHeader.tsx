@@ -1,82 +1,47 @@
 import { router } from 'expo-router';
-import { Pressable } from 'react-native';
-
-import { NotificationIcon } from '@/assets/svgs';
+import { Pressable, StyleSheet } from 'react-native';
 import { Avatar } from '@/src/components/Avatar';
 import { Box } from '@/src/components/Box';
-import { Typography } from '@/src/components/Typography';
 import { globalStyles, IMAGE_SIZE } from '@/src/constants/globalStyles';
 import { tokens } from '@/src/constants/tokens';
 import { useUser } from '@/src/hooks/useUser';
+import { Feather } from '@expo/vector-icons';
 
 export const HomeHeader = () => {
-  const { isAdmin, getAvatarUri, getDisplayAddress } = useUser();
+  const { getAvatarUri } = useUser();
 
-  const userDetails = {
-    firstName: 'OluwaTobi',
-    lastName: 'Ozenoua',
-    address: 'Savannah Estate, 3517 W. Gray St. Utica.',
-    role: 'admin',
-    status: 'Chairman',
-    houseNumber: 'House B40',
-    profileImage:
-      'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
-  };
-
-  const showAdmin = isAdmin;
   const avatarUri = getAvatarUri;
-  const displayAddress = getDisplayAddress;
 
-  const navigateEstateSelection = () => {
-    router.replace('/select-estate');
-  };
-  const navigateViewEstate = () => {
+  const navigateToProfile = () => {
     router.navigate('/view-estate');
   };
 
-  const navigateToNotification = () => {
+  const navigateToSearch = () => {
     router.navigate('/notifications');
   };
 
   return (
-    <Box paddingTop={16} style={globalStyles.rowBetween}>
-      <Box paddingBottom={16} paddingRight={12}>
+    <Box paddingTop={8} paddingBottom={24} paddingX={8}  style={globalStyles.rowBetween}>
+      <Box>
         <Avatar
           uri={avatarUri}
           size={IMAGE_SIZE}
-          onPress={navigateViewEstate}
+          onPress={navigateToProfile}
         />
       </Box>
-      <Box flexDirection="row" justifyContent="space-between">
-        <Box paddingTop={8} flex={0.8}>
-          <Typography variant="headlineBold20">
-            Hello {userDetails.firstName || 'Guest'} 👋🏼
-          </Typography>
-          <Typography
-            variant="bodyMedium14"
-            numberOfLines={2}
-            ellipsizeMode="tail"
-            onPress={navigateEstateSelection}
-          >
-            {displayAddress}
-          </Typography>
-          {showAdmin ? (
-            <Typography variant="bodyMedium14" color="primary">
-              {userDetails.status ?? 'Admin'}
-            </Typography>
-          ) : (
-            <Typography variant="bodyMedium14" color="gray">
-              {userDetails.houseNumber ?? ''}
-            </Typography>
-          )}
-        </Box>
-        <Pressable
-          onPress={navigateToNotification}
-          style={{ padding: tokens.spacing['10'] }}
+<Pressable
+          onPress={navigateToSearch}
+          style={[{ padding: tokens.spacing['12']}, styles.searchWrapper] }
         >
-          <NotificationIcon />
+<Feather name="search" size={24} color={tokens.colors.gray} />
         </Pressable>
-      </Box>
     </Box>
   );
 };
+
+const styles = StyleSheet.create({
+  searchWrapper: {
+    backgroundColor: tokens.colors.lightGray,
+    borderRadius: tokens.borderRadius.circle,
+  },
+});
