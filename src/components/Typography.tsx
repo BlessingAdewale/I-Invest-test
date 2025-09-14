@@ -48,7 +48,10 @@ export type TypographyProps = TextProps & {
     | "tiktokSubtitleMedium20"
     | "tiktokHeadlineBold32"
     | "tiktokHeadlineBold17"
-    | "tiktokHeadlineBold12";
+    | "tiktokHeadlineBold12"
+    | "tiktokHeadline700Bold12"
+    | "tiktokHeadline500Bold12"
+    | "tiktokHeadline600Bold11"
   padding?: keyof typeof tokens.spacing;
   paddingX?: keyof typeof tokens.spacing;
   paddingY?: keyof typeof tokens.spacing;
@@ -118,6 +121,9 @@ sourceSansBold20: styles.sourceSansBold20,
 sourceSansBold32: styles.sourceSansBold32,
 sourceSansBold13: styles.sourceSansBold13,
         // ----- TikTokSans -----
+          tiktokHeadline600Bold11: styles.tiktokHeadline600Bold11,
+          tiktokHeadline500Bold12: styles.tiktokHeadline500Bold12,
+        tiktokHeadline700Bold12: styles.tiktokHeadline700Bold12,
          tiktokBodyRegular13: styles.tiktokBodyRegular13,
           tiktokBodyRegular12: styles.tiktokBodyRegular12,
         tiktokBodyRegular14: styles.tiktokBodyRegular14,
@@ -320,9 +326,28 @@ const styles = StyleSheet.create({
     fontSize: normalize(17),
 
   },
+
   tiktokHeadlineBold12: {
     fontFamily: "TikTokSans-Bold",
     fontWeight: '900',
+    fontSize: normalize(12),
+
+  },
+  tiktokHeadline700Bold12: {
+    fontFamily: "TikTokSans-Bold",
+    fontWeight: '700',
+    fontSize: normalize(12),
+
+  },
+  tiktokHeadline500Bold12: {
+    fontFamily: "TikTokSans-Medium",
+    fontWeight: '500',
+    fontSize: normalize(12),
+
+  },
+  tiktokHeadline600Bold11: {
+    fontFamily: "TikTokSans-SemiBold",
+    fontWeight: '500',
     fontSize: normalize(12),
 
   },

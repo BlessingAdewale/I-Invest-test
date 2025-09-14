@@ -3,6 +3,7 @@ import { Box } from "@/src/components/Box";
 import { tokens } from "@/src/constants/tokens";
 import { Typography } from "@/src/components/Typography";
 import { Entypo } from "@expo/vector-icons";
+import { PortfolioArc } from "./PortfolioArc";
 
 export type TPortfolio = {
   id: number;
@@ -31,7 +32,6 @@ type PortfolioItemProps = {
 };
 
 const PortfolioItem = ({ item }: PortfolioItemProps) => {
-  // match portfolio type in a case-insensitive way
   const color = Colors[item.portfolioType.toLowerCase()] ?? tokens.colors.gray;
 
   return (
@@ -79,6 +79,7 @@ const PortfolioItem = ({ item }: PortfolioItemProps) => {
 export const Portfolio = () => {
   return (
     <Box paddingTop={12} paddingX={12}>
+      <PortfolioArc />
       {dummyOrders.map((item) => (
         <PortfolioItem key={item.id} item={item} />
       ))}

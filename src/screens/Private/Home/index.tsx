@@ -11,6 +11,9 @@ import StatContainer from "@/src/screens/Private/Home/components/StatContainer";
 import { SectionHeader } from "@/src/components/SectionHeader";
 import { Orders } from "./components/Orders";
 import { Portfolio } from "./components/Portfolio";
+import { Holdings } from "./components/Holdings";
+import MutualFunds from "./components/MutualFunds";
+import TradeSection from "./components/TradeSection";
 
 export default function Home() {
   return (
@@ -42,7 +45,11 @@ export default function Home() {
           }}
         >
           <Box marginTop={20} marginX={12}>
-            <SectionHeader leftTitle="Pending Orders" rightTitle="See all" onPress={()=> null} />
+            <SectionHeader
+              leftTitle="Pending Orders"
+              rightTitle="See all"
+              onPress={() => null}
+            />
           </Box>
           <Orders />
         </Box>
@@ -54,9 +61,51 @@ export default function Home() {
           }}
         >
           <Box marginTop={20} marginX={12}>
-            <SectionHeader leftTitle="Portfolio Distribution" rightTitle="See all" onPress={()=> null} />
+            <SectionHeader
+              leftTitle="Portfolio Distribution"
+              rightTitle="See all"
+              onPress={() => null}
+            />
           </Box>
           <Portfolio />
+        </Box>
+        <Box
+          marginTop={8}
+          style={{
+            backgroundColor: tokens.colors.white,
+            borderRadius: tokens.borderRadius[4],
+          }}
+        >
+          <Box marginTop={20} marginX={12}>
+            <SectionHeader
+              leftTitle="Your holdings"
+              rightTitle="See all"
+              onPress={() => null}
+            />
+          </Box>
+          <Holdings />
+        </Box>
+        <Box
+          marginTop={8}
+          marginLeft={8}
+          style={{
+            backgroundColor: tokens.colors.transparent,
+            borderRadius: tokens.borderRadius[5],
+          }}
+        >
+          <MutualFunds />
+        </Box>
+
+        <Box
+          marginTop={8}
+          style={{
+            backgroundColor: tokens.colors.white,
+            borderRadius: tokens.borderRadius[4],
+          }}
+        >
+          <Box marginTop={20} marginX={12}>
+            {/* <TradeSection /> */}
+          </Box>
         </Box>
       </ScrollView>
     </SafeScreenView>

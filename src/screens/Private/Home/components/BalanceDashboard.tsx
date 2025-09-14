@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Box } from '@/src/components/Box';
-import { Typography } from '@/src/components/Typography';
-import { tokens } from '@/src/constants/tokens';
+import React, { useEffect, useState } from "react";
+import { Box } from "@/src/components/Box";
+import { Typography } from "@/src/components/Typography";
+import { tokens } from "@/src/constants/tokens";
 
-import { AmountDisplay } from './AmountDisplay';
-import { useRecoilValue } from 'recoil';
-import { currencyTabState, USD_TAB } from '@/src/constants/recoil/recoilAtom';
-import { ArrowUpIcon } from '@/assets/svgs/ArrowUpIcon';
+import { AmountDisplay } from "./AmountDisplay";
+import { useRecoilValue } from "recoil";
+import { currencyTabState, USD_TAB } from "@/src/constants/recoil/recoilAtom";
+import { ArrowUpIcon } from "@/assets/svgs/ArrowIcon";
 
-import  { useSharedValue, withTiming, Easing, useAnimatedReaction, runOnJS } from 'react-native-reanimated';
+import {
+  useSharedValue,
+  withTiming,
+  Easing,
+  useAnimatedReaction,
+  runOnJS,
+} from "react-native-reanimated";
 
 type TUserDetails = {
   walletBalance: string;
@@ -18,17 +24,21 @@ type BalanceDashboardProps = {
   onBankingInfoPress?: () => void;
 };
 
-export const BalanceDashboard = ({ onBankingInfoPress }: BalanceDashboardProps) => {
+export const BalanceDashboard = ({
+  onBankingInfoPress,
+}: BalanceDashboardProps) => {
   const activeTab = useRecoilValue(currencyTabState);
 
   const userDetails: TUserDetails = {
-    walletBalance: activeTab === USD_TAB ? '$2,800.34' : '₦24,262,450.30',
+    walletBalance: activeTab === USD_TAB ? "$2,800.34" : "₦24,262,450.30",
   };
 
   const numericBalance =
-    parseFloat(userDetails.walletBalance.replace(/[^0-9.-]+/g, '')) || 0;
+    parseFloat(userDetails.walletBalance.replace(/[^0-9.-]+/g, "")) || 0;
   const isZeroBalance = numericBalance === 0;
-  const zeroAmount = isZeroBalance ? tokens.colors.gray : tokens.colors.darkGray;
+  const zeroAmount = isZeroBalance
+    ? tokens.colors.gray
+    : tokens.colors.darkGray;
 
   const percentShared = useSharedValue(0);
   const [percent, setPercent] = useState(0);
