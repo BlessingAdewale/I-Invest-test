@@ -16,12 +16,18 @@ export type TOrder = {
 type OrderItemProps = {
   item: TOrder;
   onPress?: (item: TOrder) => void;
+  type?: "Stocks" | "Shares";
 };
 
-export const OrderItem = ({ item, onPress }: OrderItemProps) => {
+export const OrderItem = ({
+  item,
+  onPress,
+  type = "Shares",
+}: OrderItemProps) => {
   return (
     <TouchableOpacity
       activeOpacity={ACTIVE_OPACITY}
+      hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
       onPress={() => onPress?.(item)}
       style={{
         paddingVertical: tokens.spacing[12],
@@ -33,16 +39,22 @@ export const OrderItem = ({ item, onPress }: OrderItemProps) => {
         {item.orderTitle}
       </Typography>
 
-      <Box flexDirection="row" alignItems="center" justifyContent="space-between">
+      <Box
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Box flexDirection="row" alignItems="center">
           <Typography color="deeperBlue" variant="tiktokBodyRegular13">
             {item.orderDate}
           </Typography>
           <Typography color="deeperBlue" variant="tiktokBodyRegular13">
-            •
+            {item.numberOfShares != ""?"•" :""}
           </Typography>
           <Typography color="deeperBlue" variant="tiktokBodyRegular13">
-            Estimated {item.numberOfShares} shares
+            {type === "Shares"
+              ? `Estimated ${item.numberOfShares} shares`
+              : `${item.numberOfShares}`}
           </Typography>
         </Box>
         <Entypo name="chevron-right" size={18} color={tokens.colors.deepGray} />

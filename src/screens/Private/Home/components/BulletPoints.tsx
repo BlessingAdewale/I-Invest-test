@@ -91,7 +91,9 @@ export const BulletPoints = ({
         </Box>
       </Box>
 
-      <TouchableOpacity activeOpacity={ACTIVE_OPACITY}>
+      <TouchableOpacity 
+        hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+      activeOpacity={ACTIVE_OPACITY}>
         <Box
           flexDirection="row"
           alignItems="center"

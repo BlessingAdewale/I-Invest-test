@@ -66,7 +66,7 @@ export const Holdings = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{
-          paddingHorizontal: tokens.spacing[16],
+          paddingHorizontal: tokens.spacing[10],
           gap: 12,
         }}
         style={{ paddingVertical: tokens.spacing[12] }}

@@ -22,10 +22,12 @@ type TUserDetails = {
 
 type BalanceDashboardProps = {
   onBankingInfoPress?: () => void;
+  date?: string
 };
 
 export const BalanceDashboard = ({
   onBankingInfoPress,
+  date='This month'
 }: BalanceDashboardProps) => {
   const activeTab = useRecoilValue(currencyTabState);
 
@@ -95,7 +97,7 @@ export const BalanceDashboard = ({
           variant="tiktokEmphasisBold16"
           color="textGray"
         >
-          This Month
+{date}
         </Typography>
       </Box>
     </Box>

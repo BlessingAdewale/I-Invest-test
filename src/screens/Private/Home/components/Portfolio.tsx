@@ -4,6 +4,8 @@ import { tokens } from "@/src/constants/tokens";
 import { Typography } from "@/src/components/Typography";
 import { Entypo } from "@expo/vector-icons";
 import { PortfolioArc } from "./PortfolioArc";
+import { router } from "expo-router";
+import { TouchableOpacity } from "react-native";
 
 export type TPortfolio = {
   id: number;
@@ -34,45 +36,54 @@ type PortfolioItemProps = {
 const PortfolioItem = ({ item }: PortfolioItemProps) => {
   const color = Colors[item.portfolioType.toLowerCase()] ?? tokens.colors.gray;
 
-  return (
-    <Box
-      flexDirection="row"
-      alignItems="center"
-      justifyContent="space-between"
-      paddingY={12}
-      style={{
-        borderBottomWidth: 1,
-        borderBottomColor: tokens.colors.lightGray,
-      }}
-    >
-      <Box flexDirection="row" alignItems="center">
-        <Box
-          width={8}
-          height={8}
-          borderRadius={4}
-          marginRight={5}
-          style={{
-            backgroundColor: color,
-          }}
-        />
-        <Typography variant="tiktokBodyRegular13" color="globalDark">
-          {item.portfolioType}
-        </Typography>
-      </Box>
+  const handlePress = () => {
+    router.navigate({
+      pathname: "/view-portfolio",
+      params: { type: item.portfolioType, percentage: item.percentage ?? "" },
+    });
+  };
 
-      {item.percentage && (
+  return (
+    <TouchableOpacity onPress={handlePress}>
+      <Box
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+        paddingY={12}
+        style={{
+          borderBottomWidth: 1,
+          borderBottomColor: tokens.colors.lightGray,
+        }}
+      >
         <Box flexDirection="row" alignItems="center">
-          <Typography variant="tiktokBodyRegular13" color="deeperBlue">
-            {item.percentage}
-          </Typography>
-          <Entypo
-            name="chevron-right"
-            size={18}
-            color={tokens.colors.deepGray}
+          <Box
+            width={8}
+            height={8}
+            borderRadius={4}
+            marginRight={5}
+            style={{
+              backgroundColor: color,
+            }}
           />
+          <Typography variant="tiktokBodyRegular13" color="globalDark">
+            {item.portfolioType}
+          </Typography>
         </Box>
-      )}
-    </Box>
+
+        {item.percentage && (
+          <Box flexDirection="row" alignItems="center">
+            <Typography variant="tiktokBodyRegular13" color="deeperBlue">
+              {item.percentage}
+            </Typography>
+            <Entypo
+              name="chevron-right"
+              size={18}
+              color={tokens.colors.deepGray}
+            />
+          </Box>
+        )}
+      </Box>
+    </TouchableOpacity>
   );
 };
 

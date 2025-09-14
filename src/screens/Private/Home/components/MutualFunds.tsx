@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, ScrollView, useWindowDimensions } from "react-native";
 import React from "react";
 import { Box } from "@/src/components/Box";
 import { FundIcon } from "@/assets/svgs/FundIcon";
@@ -7,6 +7,8 @@ import { Entypo } from "@expo/vector-icons";
 import { tokens } from "@/src/constants/tokens";
 
 const MutualFundsCard = () => {
+
+
   return (
     <Box
       flexDirection="row"
@@ -54,6 +56,7 @@ const InformationCard = () => {
       flexDirection="row"
       alignItems="center"
       paddingY={16}
+      paddingX={12}
       backgroundColor="white"
       style={styles.card}
     >
@@ -90,14 +93,14 @@ export default MutualFunds;
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    backgroundColor: tokens.colors.white,
     gap: tokens.spacing[12], // space between cards
   },
   card: {
     width: 360,
     overflow: "hidden",
     shadowColor: "#000",
-    borderRadius: tokens.borderRadius[12],
+    backgroundColor: tokens.colors.white,
+    borderRadius: tokens.borderRadius[5],
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
     shadowRadius: 6,

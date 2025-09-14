@@ -14,6 +14,7 @@ export const tokens = {
     borderColor: "#EBECED",
     background: "#F6F6F6",
     pinkBackground: "#E8E8FA",
+    headerTitleColor: "#383434",
     // black
     globalDark: "#000000",
     globalGray: "#6B7280",
@@ -95,6 +96,7 @@ export const tokens = {
     4: normalize(4),
     5: normalize(5),
     6: normalize(6),
+    7: normalize(7),
     8: normalize(8),
     10: normalize(10),
     12: normalize(12),

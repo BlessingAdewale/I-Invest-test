@@ -14,8 +14,14 @@ import { Portfolio } from "./components/Portfolio";
 import { Holdings } from "./components/Holdings";
 import MutualFunds from "./components/MutualFunds";
 import TradeSection from "./components/TradeSection";
+import { useCallback } from "react";
+import { router } from "expo-router";
 
 export default function Home() {
+  const handlePortfolioPress = useCallback(() => {
+    router.navigate("/portfolio-distribution");
+  }, []);
+
   return (
     <SafeScreenView
       backgroundColor={tokens.colors.background}
@@ -64,7 +70,7 @@ export default function Home() {
             <SectionHeader
               leftTitle="Portfolio Distribution"
               rightTitle="See all"
-              onPress={() => null}
+              onPress={handlePortfolioPress}
             />
           </Box>
           <Portfolio />
@@ -95,7 +101,6 @@ export default function Home() {
         >
           <MutualFunds />
         </Box>
-
         <Box
           marginTop={8}
           style={{

@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import React from "react";
 import { Box } from "@/src/components/Box";
 import { Typography } from "@/src/components/Typography";
@@ -47,7 +47,9 @@ const TradeSection = () => {
         paddingRight={16}
       />
 
-      <TouchableOpacity activeOpacity={ACTIVE_OPACITY}>
+      <TouchableOpacity
+      hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+      activeOpacity={ACTIVE_OPACITY}>
         <Box
           justifyContent="center"
           alignItems="center"

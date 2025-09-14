@@ -9,11 +9,11 @@ import { Feather } from '@expo/vector-icons';
 export const HomeHeader = () => {
 
   const navigateToProfile = () => {
-    router.navigate('/view-estate');
+    router.navigate('/view-profile');
   };
 
   const navigateToSearch = () => {
-    router.navigate('/notifications');
+    router.navigate('/search');
   };
 
   return (
