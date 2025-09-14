@@ -2,6 +2,10 @@ import React, { ReactNode } from "react";
 
 import { Box } from "@/src/components/Box";
 import { Typography } from "@/src/components/Typography";
+import SaveIcon from "@/assets/svgs/SaveIcon";
+import { tokens } from "@/src/constants/tokens";
+import { TouchableOpacity } from "react-native";
+import { ACTIVE_OPACITY } from "@/src/constants/globalStyles";
 
 type TBulletsPointsProps = {
   title?: string;
@@ -57,7 +61,7 @@ export const BulletPoints = ({
   const hasTitle = !!title;
 
   return (
-    <Box>
+    <Box justifyContent="space-between" flexDirection="row">
       <Box
         flexDirection="row"
         justifyContent="flex-start"
@@ -70,22 +74,45 @@ export const BulletPoints = ({
         <Box flexShrink={1} paddingLeft={hasTitle ? 0 : textPaddingLeft}>
           {hasTitle && (
             <Typography
-              variant="tiktokBodyRegular14"
-              color="textTertiaryLightDark"
+              variant="latoBodyRegular14"
+              color="globalDark"
               testID={titleTestID}
             >
               {title}
             </Typography>
           )}
           <Typography
-            variant="tiktokBodyRegular14"
-            color="lightGray"
+            variant="latoBodyRegular12"
+            color="textTertiaryLightDark2"
             testID={subTitleTestID}
           >
             {subTitle}
           </Typography>
         </Box>
       </Box>
+
+      <TouchableOpacity activeOpacity={ACTIVE_OPACITY}>
+        <Box
+          flexDirection="row"
+          alignItems="center"
+          paddingX={10}
+          justifyContent="center"
+          style={{
+            borderRadius: tokens.spacing[50],
+            height: tokens.spacing[36],
+            backgroundColor: tokens.colors.textBackground3,
+          }}
+        >
+          <SaveIcon />
+          <Typography
+            paddingLeft={4}
+            variant="latoHeadlineBold12"
+            color="globalDark"
+          >
+            Save
+          </Typography>
+        </Box>
+      </TouchableOpacity>
     </Box>
   );
 };

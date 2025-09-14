@@ -104,7 +104,7 @@ export default function Home() {
           }}
         >
           <Box marginTop={20} marginX={12}>
-            {/* <TradeSection /> */}
+            <TradeSection />
           </Box>
         </Box>
       </ScrollView>

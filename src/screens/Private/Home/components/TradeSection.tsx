@@ -1,20 +1,30 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { Box } from "@/src/components/Box";
 import { Typography } from "@/src/components/Typography";
 import BulletPoints from "./BulletPoints";
-import { FontAwesome6 } from "@expo/vector-icons";
 import { ReceiptIcon } from "@/assets/svgs/ReceiptIcon";
 import { ACTIVE_OPACITY } from "@/src/constants/globalStyles";
 import { ReceiptNoteIcon } from "@/assets/svgs/ReceiptNoteIcon";
+import { tokens } from "@/src/constants/tokens";
 
 const TradeSection = () => {
   return (
     <Box marginBottom={40}>
-      <Typography textAlign="center" color="globalDark">
+      <Typography
+        variant="EncodeSansSemiExpandedEmphasisBold16"
+        paddingBottom={4}
+        textAlign="center"
+        color="globalDark"
+      >
         Trade documents
       </Typography>
-      <Typography textAlign="center" color="textTertiaryLightDark">
+      <Typography
+        variant="latoBodyRegular14"
+        paddingBottom={40}
+        textAlign="center"
+        color="textTertiaryLightDark"
+      >
         Download printable copies of you account statements and trade
         confirmations.
       </Typography>
@@ -36,13 +46,32 @@ const TradeSection = () => {
         iconLeft={<ReceiptIcon />}
         paddingRight={16}
       />
+
       <TouchableOpacity activeOpacity={ACTIVE_OPACITY}>
-        <Typography>See all documents</Typography>
+        <Box
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="row"
+          style={{
+            borderWidth: 1,
+            borderColor: tokens.colors.textBorder,
+            borderRadius: tokens.spacing[50],
+             alignSelf: "center",
+          }}
+        >
+          <Typography
+            variant="latoHeadlineBold12"
+            textAlign="center"
+            color="sharpPurple2"
+            paddingY={10}
+            paddingX={16}
+          >
+            See all documents
+          </Typography>
+        </Box>
       </TouchableOpacity>
     </Box>
   );
 };
 
 export default TradeSection;
-
-const styles = StyleSheet.create({});

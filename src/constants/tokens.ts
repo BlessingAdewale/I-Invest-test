@@ -66,7 +66,7 @@ export const tokens = {
     textBlue: "#57727E",
     textBackground: "#E6F3FA",
     textBackground2: "#F5F6F6",
-    textBackground3: "#0000000D",
+    textBackground3: "#F2F2F2",
 
     //red
     red: "#EA3336",
@@ -108,6 +108,7 @@ export const tokens = {
     36: normalize(36),
     40: normalize(40),
     48: normalize(48),
+    50: normalize(50),
     64: normalize(64),
     80: normalize(80),
   },
