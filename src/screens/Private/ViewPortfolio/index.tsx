@@ -10,11 +10,17 @@ import { StockValue } from "../Home/components/StockValue";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { DonutChart } from "./components/DonourtChart";
+import { useRecoilState } from "recoil";
+import {
+  currencyTabState,
+  NGN_TAB,
+  USD_TAB,
+} from "@/src/constants/recoil/recoilAtom";
 
 export default function ViewPortfolio() {
   const { id, type } = useLocalSearchParams<{ id?: string; type?: string }>();
   const navigation = useNavigation();
-  const [activeTab, setActiveTab] = useState("US");
+  const [currencyTab, setCurrencyTab] = useRecoilState(currencyTabState);
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTitle: type ? type : "Portfolio",
@@ -28,6 +34,11 @@ export default function ViewPortfolio() {
   }, [navigation, type]);
 
   const tabs = ["US", "NG"];
+
+  const tabMap: Record<string, string> = {
+    US: USD_TAB,
+    NG: NGN_TAB,
+  };
 
   type DetailItem = {
     label: string;
@@ -44,7 +55,7 @@ export default function ViewPortfolio() {
   return (
     <SafeScreenView
       backgroundColor={tokens.colors.background}
-      edges={["left", "right"]}
+      edges={["left", "right", "bottom"]}
     >
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -80,11 +91,11 @@ export default function ViewPortfolio() {
               style={{ paddingVertical: tokens.spacing[12] }}
             >
               {tabs.map((tab) => {
-                const isActive = activeTab === tab;
+                const isActive = currencyTab === tabMap[tab];
                 return (
                   <Pressable
                     key={tab}
-                    onPress={() => setActiveTab(tab)}
+                    onPress={() => setCurrencyTab(tabMap[tab])}
                     style={{
                       borderRadius: tokens.borderRadius[8],
                       backgroundColor: isActive
