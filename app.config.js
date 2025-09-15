@@ -44,7 +44,7 @@ export default {
       },
     },
     android: {
-      package: 'com.I-Invest.app',
+      package: 'com.iinvest.app',
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
         backgroundColor: '#1A73E8',
