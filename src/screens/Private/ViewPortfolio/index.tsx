@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { Box } from "@/src/components/Box";
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect } from "react";
 import { tokens } from "@/src/constants/tokens";
 import SafeScreenView from "@/src/components/SafeAreaScreen";
 import { Pressable, ScrollView } from "react-native";

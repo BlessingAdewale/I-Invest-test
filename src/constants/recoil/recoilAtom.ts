@@ -17,7 +17,10 @@ export const createAccountState = atom<
   key: recoilAtomKeys.createAccount,
   default: null,
 });
-
+export const portfolioTypeState = atom<string | null>({
+  key: "portfolioTypeState",
+  default: null,
+});
 export const USD_TAB = 'USD';
 export const NGN_TAB = 'NGN';
 
@@ -26,33 +29,3 @@ export const currencyTabState = atom<string>({
   default: USD_TAB,
 });
 
-export type TTransactionState = {
-  project: string;
-  description: string;
-  amount: string;
-  bankAccount: string;
-  accountHolderName: string;
-  bank: string;
-  transactionApproved: boolean;
-  transactionInitiated: boolean;
-};
-
-export const transactionTypeState = atom<'income' | 'expenses'>({
-  key: 'transactionTypeState',
-  default: 'expenses',
-});
-
-export const transactionState = atom<TTransactionState>({
-  key: recoilAtomKeys.transactionState,
-
-  default: {
-    project: '',
-    description: '',
-    amount: '',
-    bankAccount: '',
-    accountHolderName: '',
-    bank: '',
-    transactionApproved: false,
-    transactionInitiated: false,
-  },
-});

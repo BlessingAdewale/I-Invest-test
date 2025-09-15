@@ -6,6 +6,8 @@ import { Entypo } from "@expo/vector-icons";
 import { PortfolioArc } from "./PortfolioArc";
 import { router } from "expo-router";
 import { TouchableOpacity } from "react-native";
+import { useSetRecoilState } from "recoil";
+import { portfolioTypeState } from "@/src/constants/recoil/recoilAtom";
 
 export type TPortfolio = {
   id: number;
@@ -34,9 +36,10 @@ type PortfolioItemProps = {
 };
 
 const PortfolioItem = ({ item }: PortfolioItemProps) => {
+  const setPortfolioType = useSetRecoilState(portfolioTypeState);
   const color = Colors[item.portfolioType.toLowerCase()] ?? tokens.colors.gray;
-
   const handlePress = () => {
+    setPortfolioType(item.portfolioType);
     router.navigate({
       pathname: "/view-portfolio",
       params: { type: item.portfolioType, percentage: item.percentage ?? "" },
