@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
+import React, { useEffect } from "react";
+import { StyleSheet } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
-import { Box } from './Box';
-import { tokens } from '../constants/tokens';
+import { Box } from "./Box";
+import { tokens } from "../constants/tokens";
 
 type TProgressBarProps = {
   progress: number; // from 0 to 1
@@ -19,9 +19,9 @@ type TProgressBarProps = {
 
 const ProgressBar = ({
   progress,
-  height = 8,
-  backgroundColor = tokens.colors.primaryLighter,
-  progressColor = tokens.colors.primary,
+  height = 10,
+  backgroundColor = tokens.colors.lightGray,
+  progressColor = tokens.colors.progressBarColor,
   duration = 300,
 }: TProgressBarProps) => {
   const progressValue = useSharedValue(0);
@@ -54,11 +54,11 @@ const ProgressBar = ({
 
 const styles = StyleSheet.create({
   bar: {
-    borderRadius: tokens.borderRadius.full,
+    borderRadius: tokens.borderRadius[0],
   },
   container: {
-    borderRadius: tokens.borderRadius.full,
-    width: '100%',
+    borderRadius: tokens.borderRadius[0],
+    width: "100%",
   },
 });
 

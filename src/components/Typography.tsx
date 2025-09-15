@@ -39,6 +39,8 @@ export type TypographyProps = TextProps & {
     | "sourceSansBold32"
     | "sourceSansBold13"
     // TikTokSans
+    | "tiktokHeadlineBold11"
+    | "tiktokHeadlineBold19"
     | "tiktokBodyRegular12"
     | "tiktokBodyRegular13"
     | "tiktokBodyRegular14"
@@ -128,6 +130,8 @@ const TypographyComponent = forwardRef<Text, TypographyProps>(
         sourceSansBold32: styles.sourceSansBold32,
         sourceSansBold13: styles.sourceSansBold13,
         // ----- TikTokSans -----
+        tiktokHeadlineBold11: styles.tiktokHeadlineBold11,
+        tiktokHeadlineBold19: styles.tiktokHeadlineBold19,
         tiktokHeadline600Bold11: styles.tiktokHeadline600Bold11,
         tiktokHeadline500Bold12: styles.tiktokHeadline500Bold12,
         tiktokHeadline700Bold12: styles.tiktokHeadline700Bold12,
@@ -205,7 +209,7 @@ const styles = StyleSheet.create({
   },
   EncodeSansSemiExpandedBodyMedium16: {
     fontFamily: "EncodeSansSemiExpanded-Medium",
-    fontWeight: '800',
+    fontWeight: "800",
     fontSize: normalize(20),
     // lineHeight: normalize(22),
   },
@@ -343,6 +347,16 @@ const styles = StyleSheet.create({
     fontFamily: "TikTokSans-Bold",
     fontWeight: "700",
     fontSize: normalize(17),
+  },
+  tiktokHeadlineBold11: {
+    fontFamily: "TikTokSans-Bold",
+    fontWeight: "700",
+    fontSize: normalize(11),
+  },
+  tiktokHeadlineBold19: {
+    fontFamily: "TikTokSans-Bold",
+    fontWeight: "900",
+    fontSize: normalize(14),
   },
 
   tiktokHeadlineBold12: {
