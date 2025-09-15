@@ -1,6 +1,6 @@
 import { ScrollView } from "react-native";
 import SafeScreenView from "@/src/components/SafeAreaScreen";
-import { globalStyles } from "@/src/constants/globalStyles";
+import { globalStyles, PADDING_HORIZONTAL } from "@/src/constants/globalStyles";
 import { BalanceDashboard } from "@/src/screens/Private/Home/components/BalanceDashboard";
 import { HomeHeader } from "@/src/screens/Private/Home/components/HomeHeader";
 import { tokens } from "@/src/constants/tokens";
@@ -23,96 +23,103 @@ export default function Home() {
   }, []);
 
   return (
-    <SafeScreenView
-      backgroundColor={tokens.colors.background}
-      edges={["left", "right", "top"]}
-    >
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={globalStyles.containerScroll}
+    <SafeScreenView edges={["left", "right", "top"]}>
+      <Box
+        style={{
+          backgroundColor: tokens.colors.background,
+        }}
       >
-        <Box
-          style={{
-            backgroundColor: tokens.colors.white,
-            borderRadius: tokens.borderRadius[4],
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingTop: tokens.spacing[8],
+            paddingHorizontal: PADDING_HORIZONTAL,
+            paddingBottom: tokens.spacing[24],
           }}
         >
-          <HomeHeader />
-          <CurrencySwitcher />
-          <BalanceDashboard />
-          <MarketInformation />
-          <StatContainer />
-        </Box>
-        <Box
-          marginTop={8}
-          style={{
-            backgroundColor: tokens.colors.white,
-            borderRadius: tokens.borderRadius[4],
-          }}
-        >
-          <Box marginTop={20} marginX={12}>
-            <SectionHeader
-              leftTitle="Pending Orders"
-              rightTitle="See all"
-              onPress={() => null}
-            />
+          <Box
+            style={{
+              backgroundColor: tokens.colors.white,
+              borderRadius: tokens.borderRadius[4],
+            }}
+          >
+            <HomeHeader />
+            <CurrencySwitcher />
+            <BalanceDashboard />
+            <MarketInformation />
+            <StatContainer />
           </Box>
-          <Orders />
-        </Box>
-        <Box
-          marginTop={8}
-          style={{
-            backgroundColor: tokens.colors.white,
-            borderRadius: tokens.borderRadius[4],
-          }}
-        >
-          <Box marginTop={20} marginX={12}>
-            <SectionHeader
-              leftTitle="Portfolio Distribution"
-              rightTitle="See all"
-              onPress={handlePortfolioPress}
-            />
+          <Box
+            marginTop={8}
+            style={{
+              backgroundColor: tokens.colors.white,
+              borderRadius: tokens.borderRadius[4],
+            }}
+          >
+            <Box marginTop={20} marginX={12}>
+              <SectionHeader
+                leftTitle="Pending Orders"
+                rightTitle="See all"
+                onPress={() => null}
+              />
+            </Box>
+            <Orders />
           </Box>
-          <Portfolio />
-        </Box>
-        <Box
-          marginTop={8}
-          style={{
-            backgroundColor: tokens.colors.white,
-            borderRadius: tokens.borderRadius[4],
-          }}
-        >
-          <Box marginTop={20} marginX={12}>
-            <SectionHeader
-              leftTitle="Your holdings"
-              rightTitle="See all"
-              onPress={() => null}
-            />
+          <Box
+            marginTop={8}
+            style={{
+              backgroundColor: tokens.colors.white,
+              borderRadius: tokens.borderRadius[4],
+            }}
+          >
+            <Box marginTop={20} marginX={12}>
+              <SectionHeader
+                leftTitle="Portfolio Distribution"
+                rightTitle="See all"
+                onPress={handlePortfolioPress}
+              />
+            </Box>
+            <Portfolio />
           </Box>
-          <Holdings />
-        </Box>
-        <Box
-          marginTop={8}
-          marginLeft={8}
-          style={{
-            backgroundColor: tokens.colors.transparent,
-            borderRadius: tokens.borderRadius[5],
-          }}
-        >
-          <MutualFunds />
-        </Box>
-        <Box
-          marginTop={8}
-          style={{
-            backgroundColor: tokens.colors.white,
-            borderRadius: tokens.borderRadius[4],
-          }}
-        >
-          <Box marginTop={20} marginX={12}>
-            <TradeSection />
+          <Box
+            marginTop={8}
+            style={{
+              backgroundColor: tokens.colors.white,
+              borderRadius: tokens.borderRadius[4],
+            }}
+          >
+            <Box marginTop={20} marginX={12}>
+              <SectionHeader
+                leftTitle="Your holdings"
+                rightTitle="See all"
+                onPress={() => null}
+              />
+            </Box>
+            <Holdings />
           </Box>
-        </Box>
-      </ScrollView>
+          <Box
+            marginTop={8}
+            marginLeft={8}
+            style={{
+              backgroundColor: tokens.colors.transparent,
+              borderRadius: tokens.borderRadius[5],
+            }}
+          >
+            <MutualFunds />
+          </Box>
+          <Box
+            marginTop={8}
+            style={{
+              backgroundColor: tokens.colors.white,
+              borderRadius: tokens.borderRadius[4],
+            }}
+          >
+            <Box marginTop={20} marginX={12}>
+              <TradeSection />
+            </Box>
+          </Box>
+        </ScrollView>
+      </Box>
     </SafeScreenView>
   );
 }

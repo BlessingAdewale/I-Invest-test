@@ -50,6 +50,7 @@
     "expo-router": "~4.0.19",
     "expo-secure-store": "~14.0.1",
     "expo-splash-screen": "~0.29.22",
+    "expo-status-bar": "^3.0.8",
     "expo-symbols": "~0.2.2",
     "expo-system-ui": "~4.0.8",
     "expo-updates": "~0.27.4",

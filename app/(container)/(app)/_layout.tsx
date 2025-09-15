@@ -1,16 +1,16 @@
 //
-import { Slot } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
-import * as NavigationBar from 'expo-navigation-bar';
+import { Slot } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
+import { useSetRecoilState } from "recoil";
+import * as NavigationBar from "expo-navigation-bar";
 //
-import {
-  authTokenState,
-} from '@/src/constants/recoil/recoilAtom';
-import { getTokenFromUserDevice } from '@/src/utils/getTokenFromUserDevice';
-import { getPersistedItem, setPersistedItem } from '@/src/utils/persistStorage';
-import { Platform } from 'react-native';
+import { authTokenState } from "@/src/constants/recoil/recoilAtom";
+import { getTokenFromUserDevice } from "@/src/utils/getTokenFromUserDevice";
+import { getPersistedItem, setPersistedItem } from "@/src/utils/persistStorage";
+import { Platform } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { Box } from "@/src/components/Box";
 
 export default function AppLayout() {
   const [isBootStraping, setIsBootStraping] = useState(true);
@@ -18,28 +18,26 @@ export default function AppLayout() {
   const setAuthTokenState = useSetRecoilState(authTokenState);
 
   useEffect(() => {
-    if (Platform.OS === 'android') {
-      NavigationBar.setButtonStyleAsync('light');
-      NavigationBar.setBackgroundColorAsync('dark');
+    if (Platform.OS === "android") {
+      NavigationBar.setButtonStyleAsync("light");
+      NavigationBar.setBackgroundColorAsync("dark");
     }
   }, []);
 
   useEffect(() => {
     const bootStrap = async () => {
       const [isFirstTimestorageValueExist, authToken] = await Promise.all([
-        getPersistedItem('isFirstTime'),
+        getPersistedItem("isFirstTime"),
         getTokenFromUserDevice(),
       ]);
-      console.log('authToken', authToken);
+      console.log("authToken", authToken);
       if (isFirstTimestorageValueExist) {
-   
         if (authToken) {
           setAuthTokenState(authToken);
         }
         return;
       }
-      await setPersistedItem('isFirstTime', 'isFirstTime');
-
+      await setPersistedItem("isFirstTime", "isFirstTime");
     };
 
     //
@@ -55,5 +53,10 @@ export default function AppLayout() {
     return null;
   }
 
-  return <Slot />;
+  return (
+    <Box flex={1}>
+      <Slot />
+      <StatusBar style="dark" backgroundColor={"#FFFFFF"} />
+    </Box>
+  );
 }
