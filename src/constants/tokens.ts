@@ -109,6 +109,7 @@ export const tokens = {
     32: normalize(32),
     36: normalize(36),
     40: normalize(40),
+    42: normalize(42),
     48: normalize(48),
     50: normalize(50),
     64: normalize(64),

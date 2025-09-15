@@ -41,18 +41,6 @@ export default function ViewPortfolio() {
     { label: "First Purchase", value: "12 May, 2018" },
   ];
 
-  const data = [
-    {
-      key: "rest",
-      value: 36,
-      svg: { fill: tokens.colors.purpleLight }, // light purple
-    },
-    {
-      key: "funds",
-      value: 64,
-      svg: { fill: tokens.colors.purpleDark }, // dark purple
-    },
-  ];
   return (
     <SafeScreenView
       backgroundColor={tokens.colors.background}
@@ -80,48 +68,50 @@ export default function ViewPortfolio() {
           <Typography variant="tiktokBodyRegular12" color="deeperBlue">
             Breakdown of your stock impact on your portfolio
           </Typography>
-          <ScrollView
-            horizontal
-            scrollEnabled={false}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              gap: 12,
-            }}
-            style={{ paddingVertical: tokens.spacing[12] }}
-          >
-            {tabs.map((tab) => {
-              const isActive = activeTab === tab;
-              return (
-                <Pressable
-                  key={tab}
-                  onPress={() => setActiveTab(tab)}
-                  style={{
-                    borderRadius: tokens.borderRadius[8],
-                    backgroundColor: isActive
-                      ? tokens.colors.textBackground
-                      : tokens.colors.textBackground2,
-                  }}
-                >
-                  <Typography
-                    paddingX={14}
-                    paddingY={8}
-                    variant="tiktokHeadline700Bold12"
-                    color={isActive ? "sharpPurple" : "lightText"}
-                  >
-                    {tab}
-                  </Typography>
-                </Pressable>
-              );
-            })}
-          </ScrollView>
 
+          {type === "Stocks" && (
+            <ScrollView
+              horizontal
+              scrollEnabled={false}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{
+                gap: 12,
+              }}
+              style={{ paddingVertical: tokens.spacing[12] }}
+            >
+              {tabs.map((tab) => {
+                const isActive = activeTab === tab;
+                return (
+                  <Pressable
+                    key={tab}
+                    onPress={() => setActiveTab(tab)}
+                    style={{
+                      borderRadius: tokens.borderRadius[8],
+                      backgroundColor: isActive
+                        ? tokens.colors.textBackground
+                        : tokens.colors.textBackground2,
+                    }}
+                  >
+                    <Typography
+                      paddingX={14}
+                      paddingY={8}
+                      variant="tiktokHeadline700Bold12"
+                      color={isActive ? "sharpPurple" : "lightText"}
+                    >
+                      {tab}
+                    </Typography>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+          )}
           <Box
             flexDirection="row"
             alignItems="center"
             justifyContent="space-between"
-            marginY={tokens.spacing[16]}
+            marginTop={42}
+            marginBottom={16}
           >
-            {/* Left side */}
             <Box alignItems="center" flex={1}>
               <Box
                 style={[
@@ -132,12 +122,12 @@ export default function ViewPortfolio() {
               <Typography variant="tiktokHeadlineBold19" marginTop={2}>
                 36%
               </Typography>
-              <Typography variant="tiktokHeadlineBold15" color="globalGray">
+              <Typography variant="tiktokBodyRegular12" color="deeperBlue">
                 $233.42
               </Typography>
               <Typography
-                variant="tiktokHeadlineMedium13"
-                color="globalGray"
+                variant="tiktokBodyRegular12"
+                color="deeperBlue"
                 marginTop={2}
               >
                 (Rest of portfolio)
@@ -155,7 +145,6 @@ export default function ViewPortfolio() {
               />
             </Box>
 
-            {/* Right side */}
             <Box alignItems="center" flex={1}>
               <Box
                 style={[
@@ -166,12 +155,12 @@ export default function ViewPortfolio() {
               <Typography variant="tiktokHeadlineBold19" marginTop={2}>
                 64%
               </Typography>
-              <Typography variant="tiktokHeadlineBold15" color="globalGray">
+              <Typography variant="tiktokBodyRegular12" color="deeperBlue">
                 $7,343.43
               </Typography>
               <Typography
-                variant="tiktokHeadlineMedium13"
-                color="globalGray"
+                variant="tiktokBodyRegular12"
+                color="deeperBlue"
                 marginTop={2}
               >
                 (3 Funds)
@@ -179,33 +168,32 @@ export default function ViewPortfolio() {
             </Box>
           </Box>
           <Box
-            borderRadius={tokens.borderRadius[12]}
             marginTop={12}
-            overflow="hidden"
+            style={{
+              borderRadius: tokens.borderRadius[12],
+              overflow: "hidden",
+            }}
           >
             {details.map((item, index) => (
               <Box key={index}>
                 <Box
                   flexDirection="row"
                   justifyContent="space-between"
-                  paddingY={tokens.spacing[12]}
-                  paddingX={tokens.spacing[16]}
+                  paddingY={12}
                 >
-                  <Typography variant="tiktokHeadlineBold15">
+                  <Typography variant="tiktokEmphasisBold16" color="globalDark">
                     {item.label}
                   </Typography>
-                  <Typography
-                    variant="tiktokHeadlineMedium15"
-                    color="globalGray"
-                  >
+                  <Typography variant="tiktokBodyRegular13" color="globalDark">
                     {item.value}
                   </Typography>
                 </Box>
                 {index !== details.length - 1 && (
                   <Box
-                    height={1}
-                    backgroundColor={tokens.colors.lightGray}
-                    marginX={tokens.spacing[16]}
+                    style={{
+                      height: 1,
+                      backgroundColor: tokens.colors.lightGray,
+                    }}
                   />
                 )}
               </Box>
@@ -228,9 +216,9 @@ export default function ViewPortfolio() {
 }
 const styles = StyleSheet.create({
   dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    marginBottom: 4,
+    width: tokens.spacing[8],
+    height: tokens.spacing[8],
+    borderRadius: tokens.borderRadius[4],
+    marginBottom: tokens.spacing[4],
   },
 });
