@@ -1,10 +1,9 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import React from "react";
 
-import {
-  EstateIcon,
-  HomeIcon,
-} from '@/assets/svgs';
+import {  HomeIcon } from "@/assets/svgs";
+import { WalletIcon } from "@/assets/svgs/WalletIcon";
+import { TransactionsIcon } from "@/assets/svgs/TransactionsIcon";
 
 export default function TabLayout() {
   return (
@@ -17,12 +16,24 @@ export default function TabLayout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: 'Home',
+          title: "Home",
           tabBarIcon: ({ focused }) => <HomeIcon focused={focused} />,
         }}
       />
-
-   
+      <Tabs.Screen
+        name="transactions"
+        options={{
+          title: "Transaction",
+          tabBarIcon: ({ focused }) => <TransactionsIcon focused={focused} />,
+        }}
+      />
+      <Tabs.Screen
+        name="wallet"
+        options={{
+          title: "Wallet",
+          tabBarIcon: ({ focused }) => <WalletIcon focused={focused} />,
+        }}
+      />
     </Tabs>
   );
 }
