@@ -8,3 +8,8 @@ expo-env.d.ts
 
 # Ignore Local Builds
 IInvestDev.app/
+# Ignore Expo
+.expo/
+
+#.gitIGnore
+.gitignore/
