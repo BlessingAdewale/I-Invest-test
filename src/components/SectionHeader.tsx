@@ -33,7 +33,7 @@ export const SectionHeader = ({
           color={tokens.colors.deepGray}
         />
       </Box>
-        <Typography onPress={onPress}   variant="tiktokBodyMedium16" color="deepBlue">
+        <Typography onPress={onPress} variant="tiktokBodyMedium16" color="deepBlue">
           {rightTitle}
         </Typography>
   
