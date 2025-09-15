@@ -1,5 +1,4 @@
 import 'react-native-reanimated';
-//
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 
