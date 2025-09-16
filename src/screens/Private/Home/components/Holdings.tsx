@@ -76,6 +76,7 @@ export const Holdings = () => {
           return (
             <Pressable
               key={tab}
+              hitSlop={{ top: 25, bottom: 25, left: 25, right: 25 }}
               onPress={() => setActiveTab(tab)}
               style={{
                 borderRadius: tokens.borderRadius[8],

@@ -12,7 +12,7 @@ export default function PortfolioDistribution() {
   return (
     <SafeScreenView
       backgroundColor={tokens.colors.background}
-      edges={["left", "right"]}
+      edges={["left", "right", "bottom"]}
     >
       <ScrollView
         showsVerticalScrollIndicator={false}

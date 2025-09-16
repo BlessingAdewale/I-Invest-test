@@ -7,8 +7,6 @@ import { Entypo } from "@expo/vector-icons";
 import { tokens } from "@/src/constants/tokens";
 
 const MutualFundsCard = () => {
-
-
   return (
     <Box
       flexDirection="row"
