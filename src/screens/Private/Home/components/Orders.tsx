@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@/src/components/Box";
 import { OrderItem, TOrder } from "./OrderItem";
 
@@ -36,12 +36,20 @@ const dummyOrders: TOrder[] = [
 ];
 
 export const Orders = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000); 
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Box paddingTop={12} paddingX={12}>
       {dummyOrders.slice(0, 3).map((item) => (
         <OrderItem
           key={item.id}
-          item={item}
+          item={loading ? { ...item, orderTitle: "", orderDate: "", numberOfShares: "" } : item}
+          loading={loading} 
           onPress={(selected) => console.log("Tapped:", selected)}
         />
       ))}

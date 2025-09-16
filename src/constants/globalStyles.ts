@@ -7,7 +7,7 @@ export const PADDING_HORIZONTAL = 8;
 export const ACTIVE_OPACITY = 0.7;
 
 export const IMAGE_SIZE = 40;
-
+export const SKELETON_COLORS = ["#f2f2f2", "#e6e6e6", "#f2f2f2"];
 export const globalStyles = StyleSheet.create({
   authWrapper: {
     paddingTop: tokens.spacing['32'],

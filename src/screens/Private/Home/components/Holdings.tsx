@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView, Pressable, StyleSheet } from "react-native";
 import { Box } from "@/src/components/Box";
 import { Typography } from "@/src/components/Typography";
 import { tokens } from "@/src/constants/tokens";
 import { Image } from "expo-image";
+import { Skeleton } from "moti/skeleton";
+import { SKELETON_COLORS } from "@/src/constants/globalStyles";
 
 type THolding = {
   id: string;
@@ -59,6 +61,12 @@ const truncateText = (text: string, maxLength = 21) => {
 
 export const Holdings = () => {
   const [activeTab, setActiveTab] = useState("Stocks - NG");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Box flex={1} backgroundColor="white" paddingTop={14}>
@@ -112,36 +120,82 @@ export const Holdings = () => {
             }}
           >
             <Box flexDirection="row" alignItems="center" gap={12}>
-              <Image
-                source={require("../../../../../assets/images/gtb.jpg")}
-                style={styles.image}
-              />
+              <Skeleton
+                show={loading}
+                height={40}
+                width={40}
+                radius={4}
+                colorMode="light"
+                colors={SKELETON_COLORS}
+              >
+                <Image
+                  source={require("../../../../../assets/images/gtb.jpg")}
+                  style={styles.image}
+                />
+              </Skeleton>
 
               <Box>
-                <Typography variant="tiktokEmphasisBold16" color="globalDark">
-                  {item.ticker}
-                </Typography>
-                <Typography variant="tiktokBodyRegular12" color="textGray2">
-                  {truncateText(item.name)}
-                </Typography>
+                <Skeleton
+                  show={loading}
+                  width={84}
+                  height={19}
+                  radius={4}
+                  colorMode="light"
+                  colors={SKELETON_COLORS}
+                >
+                  <Typography variant="tiktokEmphasisBold16" color="globalDark">
+                    {item.ticker}
+                  </Typography>
+                </Skeleton>
+
+                <Skeleton
+                  show={loading}
+                  width={182}
+                  height={19}
+                  radius={4}
+                  colorMode="light"
+                  colors={SKELETON_COLORS}
+                >
+                  <Typography variant="tiktokBodyRegular12" color="textGray2">
+                    {truncateText(item.name)}
+                  </Typography>
+                </Skeleton>
               </Box>
             </Box>
 
             {/* Right side */}
             <Box alignItems="flex-end">
-              <Typography
-                variant="tiktokHeadline500Bold12"
-                color={
-                  item.change.startsWith("-")
-                    ? "textPrimaryLightDark"
-                    : "textPrimaryLightDark"
-                }
+              <Skeleton
+                show={loading}
+                width={84}
+                height={14}
+                radius={4}
+                colorMode="light"
+            colors={SKELETON_COLORS}
               >
-                {item.change}
-              </Typography>
-              <Typography variant="tiktokHeadline600Bold11" color="deeperBlue">
-                {item.shares}
-              </Typography>
+                <Typography
+                  variant="tiktokHeadline500Bold12"
+                  color="textPrimaryLightDark"
+                >
+                  {item.change}
+                </Typography>
+              </Skeleton>
+
+              <Skeleton
+                show={loading}
+                width={66}
+                height={14}
+                radius={4}
+                colorMode="light"
+                colors={SKELETON_COLORS}
+              >
+                <Typography
+                  variant="tiktokHeadline600Bold11"
+                  color="deeperBlue"
+                >
+                  {item.shares}
+                </Typography>
+              </Skeleton>
             </Box>
           </Box>
         ))}

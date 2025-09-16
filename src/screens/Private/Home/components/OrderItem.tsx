@@ -3,8 +3,9 @@ import { TouchableOpacity } from "react-native";
 import { Box } from "@/src/components/Box";
 import { tokens } from "@/src/constants/tokens";
 import { Typography } from "@/src/components/Typography";
-import { ACTIVE_OPACITY } from "@/src/constants/globalStyles";
+import { ACTIVE_OPACITY, SKELETON_COLORS } from "@/src/constants/globalStyles";
 import { Entypo } from "@expo/vector-icons";
+import { Skeleton } from "moti/skeleton";
 
 export type TOrder = {
   id: number;
@@ -17,12 +18,14 @@ type OrderItemProps = {
   item: TOrder;
   onPress?: (item: TOrder) => void;
   type?: "Stocks" | "Shares";
+  loading?: boolean;
 };
 
 export const OrderItem = ({
   item,
   onPress,
   type = "Shares",
+  loading = false,
 }: OrderItemProps) => {
   return (
     <TouchableOpacity
@@ -34,30 +37,77 @@ export const OrderItem = ({
         borderBottomWidth: 1,
         borderBottomColor: tokens.colors.lightGray,
       }}
+      disabled={loading}
     >
-      <Typography variant="tiktokEmphasisBold16" color="globalDark">
-        {item.orderTitle}
-      </Typography>
+      <Skeleton
+        show={loading}
+        width="60%"
+        height={20}
+        radius={4}
+        colorMode="light"
+     colors={SKELETON_COLORS}
+      >
+        <Typography variant="tiktokEmphasisBold16" color="globalDark">
+          {item.orderTitle}
+        </Typography>
+      </Skeleton>
 
       <Box
         flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
+        marginTop={6}
       >
-        <Box flexDirection="row" alignItems="center">
-          <Typography color="deeperBlue" variant="tiktokBodyRegular13">
-            {item.orderDate}
-          </Typography>
-          <Typography color="deeperBlue" variant="tiktokBodyRegular13">
-            {item.numberOfShares != ""?"•" :""}
-          </Typography>
-          <Typography color="deeperBlue" variant="tiktokBodyRegular13">
-            {type === "Shares"
-              ? `Estimated ${item.numberOfShares} shares`
-              : `${item.numberOfShares}`}
-          </Typography>
+        <Box flexDirection="row" alignItems="center" gap={6}>
+          <Skeleton
+            show={loading}
+            width={90}
+            height={18}
+            radius={4}
+            colorMode="light"
+          colors={SKELETON_COLORS}
+          >
+            <Typography color="deeperBlue" variant="tiktokBodyRegular13">
+              {item.orderDate}
+            </Typography>
+          </Skeleton>
+
+          {!loading && item.numberOfShares !== "" && (
+            <Typography color="deeperBlue" variant="tiktokBodyRegular13">
+              •
+            </Typography>
+          )}
+
+          <Skeleton
+            show={loading}
+            width={140}
+            height={20}
+            radius={4}
+            colorMode="light"
+           colors={SKELETON_COLORS}
+          >
+            <Typography color="deeperBlue" variant="tiktokBodyRegular13">
+              {type === "Shares"
+                ? `Estimated ${item.numberOfShares} shares`
+                : `${item.numberOfShares}`}
+            </Typography>
+          </Skeleton>
         </Box>
-        <Entypo name="chevron-right" size={18} color={tokens.colors.deepGray} />
+
+        <Skeleton
+          show={loading}
+          width={18}
+          height={18}
+          radius={9}
+          colorMode="light"
+           colors={SKELETON_COLORS}
+        >
+          <Entypo
+            name="chevron-right"
+            size={18}
+            color={tokens.colors.deepGray}
+          />
+        </Skeleton>
       </Box>
     </TouchableOpacity>
   );
