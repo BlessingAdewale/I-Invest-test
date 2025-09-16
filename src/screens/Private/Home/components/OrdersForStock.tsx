@@ -42,12 +42,8 @@ export const OrdersForStock = () => {
       {dummyOrders.slice(0, 4).map((item) => (
         <OrderItem
           key={item.id}
-          item={
-            loading
-              ? { ...item, orderTitle: "", orderDate: "", numberOfShares: "" }
-              : item
-          }
-          loading={loading}
+          item={item}       
+          loading={loading} 
           type="Stocks"
           onPress={(selected) => console.log("Tapped:", selected)}
         />
